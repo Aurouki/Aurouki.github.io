@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Atcoder," />
 
 
 
@@ -79,14 +79,17 @@
 
 
 
-<meta name="description" content="Aurouki个人博客,主要记录算法笔记、比赛题解与题集">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Aurouki">
-<meta property="og:url" content="http://example.com/index.html">
+<meta name="description" content="Atcoder Beginner Contest 351A - The bottom of the ninth(模拟)题意&nbsp;&nbsp;&nbsp;&nbsp;两支队伍A,B正在进行比赛,比赛分为上半和下半两场各有9局,已知上半局A的全部得分和下半局B的前8局得分,问B的最后一局得分至少是多少才能使得B的总分严格大于A? 思路&nbsp;&nbsp;&nbsp;&nbsp;设所有A的总和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="abc351">
+<meta property="og:url" content="http://example.com/abc351/index.html">
 <meta property="og:site_name" content="Aurouki">
-<meta property="og:description" content="Aurouki个人博客,主要记录算法笔记、比赛题解与题集">
+<meta property="og:description" content="Atcoder Beginner Contest 351A - The bottom of the ninth(模拟)题意&nbsp;&nbsp;&nbsp;&nbsp;两支队伍A,B正在进行比赛,比赛分为上半和下半两场各有9局,已知上半局A的全部得分和下半局B的前8局得分,问B的最后一局得分至少是多少才能使得B的总分严格大于A? 思路&nbsp;&nbsp;&nbsp;&nbsp;设所有A的总和">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-05-02T08:30:51.000Z">
+<meta property="article:modified_time" content="2024-05-02T08:47:42.779Z">
 <meta property="article:author" content="Melodic">
+<meta property="article:tag" content="Atcoder">
 <meta name="twitter:card" content="summary">
 
 
@@ -117,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/"/>
+  <link rel="canonical" href="http://example.com/abc351/"/>
 
 
 
 
 
-  <title>Aurouki</title>
+  <title>abc351 | Aurouki</title>
   
 
 
@@ -142,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -246,927 +248,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/%E6%AC%A7%E6%8B%89%E7%AD%9B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/profile.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aurouki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/%E6%AC%A7%E6%8B%89%E7%AD%9B/" itemprop="url">欧拉筛</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T17:24:28+08:00">
-                2024-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM模版</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E6%95%B0%E8%AE%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">数论</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">bool numlist[100000001];</span><br><span class="line">int prime[20000001], cnt;</span><br><span class="line">void work(int n)&#123;</span><br><span class="line">    for(int i=2; i&lt;=n; i++)&#123;</span><br><span class="line">	    if(numlist[i]==false)</span><br><span class="line">	    	prime[++cnt] = i;</span><br><span class="line">	    for(int j=1; j&lt;=cnt&amp;&amp;i*prime[j]&lt;=n; j++)&#123;</span><br><span class="line">	        numlist[i*prime[j]] = 1;</span><br><span class="line">	    	if(i%prime[j]==0)</span><br><span class="line">                    break;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">	return;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/%E7%BB%84%E5%90%88%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/profile.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aurouki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/%E7%BB%84%E5%90%88%E6%95%B0/" itemprop="url">组合数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T17:20:38+08:00">
-                2024-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM模版</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E6%95%B0%E8%AE%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">数论</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>采用<strong>阶乘逆元</strong>的相关知识，可以在预处理阶乘后以O(1)查询组合数，其中，p必须是一个<strong>质数</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int C(int x,int y)&#123;</span><br><span class="line">    return 1ll*jc[x]*njc[y]%p*njc[x-y]%p;</span><br><span class="line">&#125;</span><br><span class="line">for(int i=0;i&lt;2;i++)jc[i]=njc[i]=inv[i]=1;//阶乘，阶乘逆元，逆元</span><br><span class="line">for(int i=2;i&lt;=100001;i++)&#123;</span><br><span class="line">    jc[i]=1ll*jc[i-1]*i%p;</span><br><span class="line">    inv[i]=1ll*inv[p%i]*(p-p/i)%p;</span><br><span class="line">    njc[i]=1ll*njc[i-1]*inv[i]%p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/%E4%BD%8D%E8%BF%90%E7%AE%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/profile.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aurouki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/%E4%BD%8D%E8%BF%90%E7%AE%97/" itemprop="url">位运算</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T17:13:29+08:00">
-                2024-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM模版</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">基础算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="实用公式："><a href="#实用公式：" class="headerlink" title="实用公式："></a>实用公式：</h2><h3 id="a-b-a-b-a-b"><a href="#a-b-a-b-a-b" class="headerlink" title="a + b &#x3D; a | b + a &amp; b"></a>a + b &#x3D; a | b + a &amp; b</h3><h4 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h4><h5 id="性质：两个数异或相当于各位进行无进制的二进制加法"><a href="#性质：两个数异或相当于各位进行无进制的二进制加法" class="headerlink" title="性质：两个数异或相当于各位进行无进制的二进制加法"></a>性质：两个数异或相当于各位进行<strong>无进制的二进制加法</strong></h5><h5 id="重要公式："><a href="#重要公式：" class="headerlink" title="重要公式："></a>重要公式：</h5><p><strong>1^1&#x3D;0 $\iff$ x^x&#x3D;0</strong><br><strong>a^b&#x3D;x $\iff$ a^x&#x3D;b</strong></p>
-<h4 id="builtin-popcount函数（统计二进制中‘1’的个数）"><a href="#builtin-popcount函数（统计二进制中‘1’的个数）" class="headerlink" title="__builtin_popcount函数（统计二进制中‘1’的个数）"></a>__builtin_popcount函数（统计二进制中‘1’的个数）</h4><ol>
-<li>__builtin_popcount(unsigned int n) &#x2F;&#x2F;返回int类型</li>
-<li>__builtin_popcountll(unsigned int n) &#x2F;&#x2F;返回long long类型</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/%E4%B8%89%E5%88%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/profile.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aurouki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/%E4%B8%89%E5%88%86/" itemprop="url">三分</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T17:10:16+08:00">
-                2024-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM模版</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">基础算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">while (fabs(R-L)&lt;eps) (整数为R&gt;L )</span><br><span class="line">&#123;</span><br><span class="line">     int lmid = L + (R - L) / 3;</span><br><span class="line">     int rmid = R - (R - L) / 3;</span><br><span class="line">     if (F( lmid ) &lt; F( rmid )) （自行判断有无等号）</span><br><span class="line">        L = lmid + 1, ans = L;(找最大值)</span><br><span class="line">    else</span><br><span class="line">        R = rmid - 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/%E6%B5%AE%E7%82%B9%E6%95%B0%E4%BA%8C%E5%88%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/profile.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aurouki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/%E6%B5%AE%E7%82%B9%E6%95%B0%E4%BA%8C%E5%88%86/" itemprop="url">浮点数二分</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T17:06:12+08:00">
-                2024-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM模版</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">基础算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#define double eps=&lt;精度&gt;（尽可能小）</span><br><span class="line">bool check(&lt;参数&gt;)&#123;	//用于实现满足题意的条件</span><br><span class="line">    ...</span><br><span class="line">    return&lt;条件&gt;;</span><br><span class="line">&#125;</span><br><span class="line">double l = &lt;下界&gt;,r = &lt;上界&gt;, ans;</span><br><span class="line">while(r-l&gt;=eps) &#123;</span><br><span class="line">    double mid=(l + r) / 2;</span><br><span class="line">    if (check(mid))</span><br><span class="line">        ans = mid, l = mid ; / r = mid ;</span><br><span class="line">                (找最大值) (找最小值)</span><br><span class="line">    else</span><br><span class="line">        r = mid ; / l = mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%88%E5%8F%96%E6%A8%A1%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/profile.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aurouki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%88%E5%8F%96%E6%A8%A1%EF%BC%89/" itemprop="url">快速幂（取模）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T16:54:50+08:00">
-                2024-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM模版</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">基础算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int power_mod(int a, int b, int mod)&#123;</span><br><span class="line">    int res = 1;</span><br><span class="line">    a = a % mod;</span><br><span class="line">    while (b) &#123;</span><br><span class="line">        if (b &amp; 1) res = (res % mod * a % mod) % mod;</span><br><span class="line">        b &gt;&gt;= 1;</span><br><span class="line">        a = (a % mod * a % mod) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
 
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -1196,9 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/abc351/" itemprop="url">abc351</a></h1>
+          <h1 class="post-title" itemprop="name headline">abc351</h1>
         
 
         <div class="post-meta">
@@ -1292,9 +374,7 @@
       
 
       
-        
-          
-            <h1 id="Atcoder-Beginner-Contest-351"><a href="#Atcoder-Beginner-Contest-351" class="headerlink" title="Atcoder Beginner Contest 351"></a>Atcoder Beginner Contest 351</h1><h2 id="A-The-bottom-of-the-ninth-模拟"><a href="#A-The-bottom-of-the-ninth-模拟" class="headerlink" title="A - The bottom of the ninth(模拟)"></a>A - The bottom of the ninth(模拟)</h2><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;两支队伍A,B正在进行比赛,比赛分为上半和下半两场各有<strong>9局</strong>,已知上半局<strong>A的全部</strong>得分和下半局<strong>B的前8局</strong>得分,问B的最后一局得分至少是多少才能使得B的总分<strong>严格大于</strong>A?</p>
+        <h1 id="Atcoder-Beginner-Contest-351"><a href="#Atcoder-Beginner-Contest-351" class="headerlink" title="Atcoder Beginner Contest 351"></a>Atcoder Beginner Contest 351</h1><h2 id="A-The-bottom-of-the-ninth-模拟"><a href="#A-The-bottom-of-the-ninth-模拟" class="headerlink" title="A - The bottom of the ninth(模拟)"></a>A - The bottom of the ninth(模拟)</h2><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;两支队伍A,B正在进行比赛,比赛分为上半和下半两场各有<strong>9局</strong>,已知上半局<strong>A的全部</strong>得分和下半局<strong>B的前8局</strong>得分,问B的最后一局得分至少是多少才能使得B的总分<strong>严格大于</strong>A?</p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;设所有A的总和<strong>sum_A</strong>&#x3D; $\sum_ {i&#x3D;1}^9 A_{i}\quad$,前八局B的总和<strong>sum_B</strong>为$\sum_ {i&#x3D;1}^8 B_{i}$;易知，当sum_A$\geq$sum_B时,此时B需要<strong>sum_A-sum_B+1</strong>的得分，反之，B已经严格高于A的得分.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define int long long</span><br><span class="line">#define endl &#x27;\n&#x27; </span><br><span class="line">using namespace std;</span><br><span class="line">int a[15], b[15];</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">    int sum1 = 0, sum2 = 0;</span><br><span class="line">    for (int i = 1; i &lt;= 9;i++)</span><br><span class="line">        cin &gt;&gt; a[i], sum1 += a[i];</span><br><span class="line">    for (int i = 1; i &lt; 9; i++)</span><br><span class="line">        cin &gt;&gt; b[i], sum2 +=  b[i];</span><br><span class="line">    int ans = max(sum1 - sum2 + 1, 0LL);</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="B-Spot-the-Difference-模拟"><a href="#B-Spot-the-Difference-模拟" class="headerlink" title="B - Spot the Difference(模拟)"></a>B - Spot the Difference(模拟)</h2><h3 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h3><p>两个N$\times$N的网格，已知这两个网格<strong>有且只有一个</strong>位置(i,j)内的字符不同。请找出这个(i,j)的位置，行列的下标<strong>从1开始</strong>编号。</p>
@@ -1329,8 +409,6 @@
 
 
 
-          
-        
       
     </div>
     
@@ -1340,138 +418,74 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://wsd091.bvimg.com/21559/b141703d8f382e20.jpg" alt=" WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://wsd091.bvimg.com/21559/dc83bbc74e29cf45.jpg" alt=" Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/profile.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aurouki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hello-world/" itemprop="url">个人博客</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-01T13:19:34+08:00">
-                2024-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Atcoder/" rel="tag"># Atcoder</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          
-        
-      
-    </div>
-    
-    
-    
+              <a href="/hello-world/" rel="next" title="个人博客">
+                <i class="fa fa-chevron-left"></i> 个人博客
+              </a>
+            
+          </div>
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%88%E5%8F%96%E6%A8%A1%EF%BC%89/" rel="prev" title="快速幂（取模）">
+                快速幂（取模） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -1481,10 +495,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -1492,6 +507,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -1512,8 +531,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1593,6 +621,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Atcoder-Beginner-Contest-351"><span class="nav-number">1.</span> <span class="nav-text">Atcoder Beginner Contest 351</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-The-bottom-of-the-ninth-%E6%A8%A1%E6%8B%9F"><span class="nav-number">1.1.</span> <span class="nav-text">A - The bottom of the ninth(模拟)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.2.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Spot-the-Difference-%E6%A8%A1%E6%8B%9F"><span class="nav-number">1.2.</span> <span class="nav-text">B - Spot the Difference(模拟)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="nav-number">1.2.2.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Merge-the-balls-%E6%A0%88"><span class="nav-number">1.3.</span> <span class="nav-text">C - Merge the balls(栈)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-2"><span class="nav-number">1.3.3.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Grid-and-Magnet"><span class="nav-number">1.4.</span> <span class="nav-text">D - Grid and Magnet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Jump-Distance-Sum"><span class="nav-number">1.5.</span> <span class="nav-text">E - Jump Distance Sum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Double-Sum-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84-%E7%A6%BB%E6%95%A3%E5%8C%96"><span class="nav-number">1.6.</span> <span class="nav-text">F - Double Sum(树状数组+离散化)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F-3"><span class="nav-number">1.6.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-2"><span class="nav-number">1.6.2.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-3"><span class="nav-number">1.6.3.</span> <span class="nav-text">思路</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1740,6 +784,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
