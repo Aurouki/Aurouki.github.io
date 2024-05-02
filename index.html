@@ -261,6 +261,930 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aurouki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%AE%97%E6%B3%95/" itemprop="url">最短路算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T19:24:35+08:00">
+                2024-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM模版</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index">
+                    <span itemprop="name">图论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="无边权"><a href="#无边权" class="headerlink" title="无边权"></a>无边权</h2><h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><h2 id="有边权"><a href="#有边权" class="headerlink" title="有边权"></a>有边权</h2><h3 id="全源最短路"><a href="#全源最短路" class="headerlink" title="全源最短路"></a>全源最短路</h3><h4 id="Floyd-算法（时间复杂度：O（-N-3-））"><a href="#Floyd-算法（时间复杂度：O（-N-3-））" class="headerlink" title="Floyd 算法（时间复杂度：O（$N^3$））"></a>Floyd 算法（时间复杂度：O（$N^3$））</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void floyd()&#123;</span><br><span class="line">    for (int k = 0; k &lt; n; k++) </span><br><span class="line">    for (int i = 0; i &lt; n; i++) </span><br><span class="line">    for (int j = 0; j &lt; n; j++)                 </span><br><span class="line">        if (dist[i][k] != INF &amp;&amp; dist[k][j] != INF &amp;&amp; dist[i][j] &gt; dist[i][k] + dist[k][j]) </span><br><span class="line">            dist[i][j] = dist[i][k] + dist[k][j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="单源最短路径"><a href="#单源最短路径" class="headerlink" title="单源最短路径"></a>单源最短路径</h3><h4 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h4><h5 id="朴素（时间复杂度：O（-N-2-））"><a href="#朴素（时间复杂度：O（-N-2-））" class="headerlink" title="朴素（时间复杂度：O（$N^2$））"></a>朴素（时间复杂度：O（$N^2$））</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">auto Dijkstra = [&amp;]() -&gt; void&#123;</span><br><span class="line">   dist[s] = 0;</span><br><span class="line">   int cur = s;</span><br><span class="line">   while (!vis[cur])&#123;</span><br><span class="line">      vis[cur] = 1;</span><br><span class="line">      for (auto it : e[cur])</span><br><span class="line">         if (!vis[it.first] &amp;&amp; dist[it.first] &gt; dist[cur] + it.second)</span><br><span class="line">              dist[it.first] = dist[cur] + it.second;</span><br><span class="line">              int mini = INF;</span><br><span class="line">              for (int i = 1; i &lt;= n;i++)</span><br><span class="line">                 if (!vis[i] &amp;&amp; dist[i] &lt; mini)</span><br><span class="line">                    mini = dist[i], cur = i;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="堆优化（时间复杂度：O（-N-M-times-log-2M-））"><a href="#堆优化（时间复杂度：O（-N-M-times-log-2M-））" class="headerlink" title="堆优化（时间复杂度：O（ $(N+M)\times\log_2M$ ））"></a>堆优化（时间复杂度：O（ $(N+M)\times\log_2M$ ））</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">auto Dijkstra = [&amp;]() -&gt; void&#123;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)dist[i] = inf,vis[i] = 0;</span><br><span class="line">    dist[s] = 0;</span><br><span class="line">    priority_queue&lt;pii,vector&lt;pii&gt;,greater&lt;pii&gt;&gt;q;</span><br><span class="line">    q.push(&#123;0,s&#125;);</span><br><span class="line">    while (!vis[cur])&#123;</span><br><span class="line">        auto temp=q.top();</span><br><span class="line">        q.pop();</span><br><span class="line">        int fir = temp.first,sec = temp.second;</span><br><span class="line">        if(vis[sec])continue;</span><br><span class="line">        vie[sec] = 1;</span><br><span class="line">        for (auto it : e[sec])</span><br><span class="line">            if (dist[it.first] &gt; fir + it.second)&#123;</span><br><span class="line">                dist[it.first] = fir + it.second;</span><br><span class="line">                q.push(&#123;dist[it.first],it.first&#125;);</span><br><span class="line">            &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E5%AD%97%E5%85%B8%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aurouki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E5%AD%97%E5%85%B8%E6%A0%91/" itemprop="url">字典树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T19:21:23+08:00">
+                2024-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM模版</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int trie[30][100010]; //trie[i][N]表示以i为结点，N为子节点值的编号（初始为零）</span><br><span class="line">void add(string x)&#123;</span><br><span class="line">    int u = 0,num = s.length();</span><br><span class="line">    for(int j = 0;j &lt; num;j++)&#123;</span><br><span class="line">        int p = s[j] - &#x27;a&#x27;;</span><br><span class="line">        if(!trie[u][p])trie[u][p] = ++ idx;</span><br><span class="line">        u = trie[u][p];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int query(string s)&#123;</span><br><span class="line">    int res = 0, u = 0, num = s.length();</span><br><span class="line">    for(int j = 0; j &lt; num; j++)&#123;</span><br><span class="line">        int p = s[j] - &#x27;a&#x27;;</span><br><span class="line">        u = trie[u][p];</span><br><span class="line">        res += cnt[u];</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aurouki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E5%B9%B6%E6%9F%A5%E9%9B%86/" itemprop="url">并查集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T19:13:23+08:00">
+                2024-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM模版</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">for(int i = 1;i &lt;= n; i++)</span><br><span class="line">    fa[i] = i;</span><br><span class="line">int find(int x) &#123;  //路径压缩</span><br><span class="line">    return (fa[x] == x ? x : fa[x] = find(fa[x]));</span><br><span class="line">&#125;</span><br><span class="line">void merge(int x, int y) &#123;</span><br><span class="line">    int px = find(x), py = get(y);</span><br><span class="line">    if(px == py) return;</span><br><span class="line">    fa[px] =py ;  //将x的父亲改为y</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="连通块大小"><a href="#连通块大小" class="headerlink" title="连通块大小"></a>连通块大小</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void merge(int x, int y) &#123;</span><br><span class="line">    int px = find(x), py = get(y);</span><br><span class="line">    if(px == py) return;</span><br><span class="line">    fa[px] =py ;  //将x的父亲改为y</span><br><span class="line">    siz[py] += siz[px];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="并查集按秩大小合并（启发式合并）"><a href="#并查集按秩大小合并（启发式合并）" class="headerlink" title="并查集按秩大小合并（启发式合并）"></a>并查集按秩大小合并（启发式合并）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt;siz(N, 1);//记录并初始化子集合的大小为1</span><br><span class="line">void unionset( int x , int y)&#123;</span><br><span class="line">    int px = find(x), py = find(y);</span><br><span class="line">    if(px == py)return ;</span><br><span class="line">    if(siz[x] &gt; siz[y]) swap(x,y);</span><br><span class="line">    fa[px] = py;</span><br><span class="line">    siz[py] += siz[px];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aurouki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" itemprop="url">树状数组</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T18:49:45+08:00">
+                2024-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM模版</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="单点修改-区间求和"><a href="#单点修改-区间求和" class="headerlink" title="单点修改+区间求和"></a>单点修改+区间求和</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define int long long</span><br><span class="line">#define endl &quot;\n&quot;</span><br><span class="line">using namespace std;</span><br><span class="line">int T,n,m,a[500010];</span><br><span class="line">signed main()&#123;</span><br><span class="line">	std::ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">    auto add=[&amp;](int x,int k)-&gt;void&#123;</span><br><span class="line">        for(int i = x;i &lt;= n;i += i&amp;(-i))</span><br><span class="line">            a[i]+=k;</span><br><span class="line">    &#125;;</span><br><span class="line">    auto query=[&amp;](int x)-&gt;int&#123;</span><br><span class="line">        int res=0;</span><br><span class="line">        for(int i = x; i ; i -= i &amp; (-i))</span><br><span class="line">            res += a[i];</span><br><span class="line">        return res;</span><br><span class="line">    &#125;;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">		int x;cin&gt;&gt;x;</span><br><span class="line">		add(i,x);</span><br><span class="line">	&#125;</span><br><span class="line">	while(m--)&#123;</span><br><span class="line">		int opt;cin&gt;&gt;opt;</span><br><span class="line">		if(opt==1)&#123;</span><br><span class="line">			int x,k;cin &gt;&gt; x &gt;&gt; k;</span><br><span class="line">			add(x,k);</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			int x,y,ans;cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">			ans = query(y) - query(x-1);</span><br><span class="line">			cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="区间修改-单点查询"><a href="#区间修改-单点查询" class="headerlink" title="区间修改+单点查询"></a>区间修改+单点查询</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define int long long</span><br><span class="line">#define endl &quot;\n&quot;</span><br><span class="line">using namespace std;</span><br><span class="line">int n,m,a[500010],diff[500010];</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    for(int i = 1;i &lt;= n;i++) cin &gt;&gt; a[i];</span><br><span class="line">    auto add=[&amp;](int x,int k)-&gt;void&#123;</span><br><span class="line">        for(int i = x; i &lt;= n; i += i &amp; (-i))</span><br><span class="line">            diff[i] += k;</span><br><span class="line">    &#125;;</span><br><span class="line">    auto query=[&amp;](int x)-&gt;int&#123;</span><br><span class="line">        int res = 0;</span><br><span class="line">        for(int i = x; i ; i -= i &amp; (-i))</span><br><span class="line">            res += diff[i];</span><br><span class="line">        return res;</span><br><span class="line">    &#125;;</span><br><span class="line">    while(m--)&#123;</span><br><span class="line">	int opt;cin&gt;&gt;opt;</span><br><span class="line">	if(opt == 1)&#123;</span><br><span class="line">	int x,y,k;</span><br><span class="line">        cin &gt;&gt; x &gt;&gt; y &gt;&gt; k;</span><br><span class="line">	add(x, k),add(y + 1, -k);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        int x,ans;</span><br><span class="line">        cin &gt;&gt; x; </span><br><span class="line">	ans = a[x] + query(x);</span><br><span class="line">	cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">    &#125;	 </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="区间修改-区间查询"><a href="#区间修改-区间查询" class="headerlink" title="区间修改+区间查询"></a>区间修改+区间查询</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">#define int long long</span><br><span class="line">#define endl &#x27;\n&#x27;</span><br><span class="line">#define INF 1e15</span><br><span class="line">using namespace std;</span><br><span class="line">typedef pair&lt;int, int&gt; pii;</span><br><span class="line">int a[1000010], b[1000010], diff[1000010], t[1000010];</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);</span><br><span class="line">    cin.tie(0);</span><br><span class="line">    int T=1；</span><br><span class="line">    while (T--)</span><br><span class="line">    &#123;</span><br><span class="line">        int n, q;</span><br><span class="line">        cin &gt;&gt; n &gt;&gt; q;</span><br><span class="line">        for (int i = 1; i &lt;= n; i++)&#123;</span><br><span class="line">            cin &gt;&gt; a[i];</span><br><span class="line">            b[i] = a[i] - a[i - 1];</span><br><span class="line">        &#125;</span><br><span class="line">        auto add1 = [&amp;](int x, int k) -&gt; void</span><br><span class="line">        &#123;</span><br><span class="line">            for (int i=x; i &lt;= n; i += i &amp; (-i))&#123;</span><br><span class="line">                diff[i] += k;</span><br><span class="line">                t[i] += k * x;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        auto add2 = [&amp;](int l, int r, int x) -&gt; void&#123;</span><br><span class="line">            add1(l, x), add1(r + 1, -x);</span><br><span class="line">        &#125;;</span><br><span class="line">        auto query1 = [&amp;](int x) -&gt; int&#123;</span><br><span class="line">            int res = 0;</span><br><span class="line">            for (int i = x; i; i -= i &amp; (-i) )</span><br><span class="line">                res += (x + 1) * diff[i] - t[i];</span><br><span class="line">            return res;</span><br><span class="line">        &#125;;</span><br><span class="line">        auto query2 = [&amp;](int l, int r)&#123;</span><br><span class="line">            return query1(r) - query1(l - 1);</span><br><span class="line">        &#125;;</span><br><span class="line">        for (int i = 1; i &lt;= n; i++)&#123;</span><br><span class="line">            add1(i, b[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        while (q--)&#123;</span><br><span class="line">            int opt;cin &gt;&gt; opt;</span><br><span class="line">            if (opt == 1)&#123;</span><br><span class="line">                int l, r, x;</span><br><span class="line">                cin &gt;&gt; l &gt;&gt; r &gt;&gt; x;</span><br><span class="line">                add2(l, r, x);</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                int l, r;cin &gt;&gt; l &gt;&gt; r;</span><br><span class="line">                cout&lt;&lt;query2(l,r)&lt;&lt;endl;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aurouki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url">线段树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T18:44:06+08:00">
+                2024-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM模版</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="经典区间求和、区间修改"><a href="#经典区间求和、区间修改" class="headerlink" title="经典区间求和、区间修改"></a>经典区间求和、区间修改</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define int long long</span><br><span class="line">using namespace std;</span><br><span class="line">int i,j,k,m,n,x,y,z,cnt,opt,L,R,val;</span><br><span class="line">struct segment_tree&#123;</span><br><span class="line">    int L,R,size;int lazy,ans;</span><br><span class="line">&#125;a[1600010];</span><br><span class="line">void up(int x)&#123;</span><br><span class="line">    a[x].ans=a[x&lt;&lt;1].ans+a[(x&lt;&lt;1)+1].ans;</span><br><span class="line">&#125;</span><br><span class="line">void down(int x)&#123;</span><br><span class="line">	if(!a[x].lazy)return;</span><br><span class="line">	a[x].ans+=a[x].lazy*a[x].size;</span><br><span class="line">	if(a[x&lt;&lt;1].L)&#123;</span><br><span class="line">    	a[x&lt;&lt;1].lazy+=a[x].lazy;</span><br><span class="line">    	a[(x&lt;&lt;1)+1].lazy+=a[x].lazy;</span><br><span class="line">    &#125;</span><br><span class="line">        a[x].lazy=0;</span><br><span class="line">&#125;</span><br><span class="line">void build(int x,int L,int R)&#123;</span><br><span class="line">	a[x].L=L;a[x].R=R;a[x].size=R-L+1;</span><br><span class="line">	if(L==R)&#123;</span><br><span class="line">	    cin&gt;&gt;a[x].ans;</span><br><span class="line">	    return;</span><br><span class="line">	&#125;</span><br><span class="line">	const int mid=L+R&gt;&gt;1; </span><br><span class="line">	build(x&lt;&lt;1,L,mid);build((x&lt;&lt;1)+1,mid+1,R);</span><br><span class="line">	up(x);</span><br><span class="line">&#125;</span><br><span class="line">void change(int x,int L,int R,int val)&#123;</span><br><span class="line">	down(x);</span><br><span class="line">	if(a[x].L&gt;R||a[x].R&lt;L)return;</span><br><span class="line">	if(a[x].L&gt;=L&amp;&amp;a[x].R&lt;=R)&#123;</span><br><span class="line">	    a[x].lazy+=val;</span><br><span class="line">	    down(x);return;</span><br><span class="line">	&#125;</span><br><span class="line">	change(x&lt;&lt;1,L,R,val);</span><br><span class="line">	change((x&lt;&lt;1)+1,L,R,val);</span><br><span class="line">	up(x);</span><br><span class="line">&#125;</span><br><span class="line">int query(int x,int L,int R)&#123;</span><br><span class="line">	down(x);</span><br><span class="line">	if(a[x].L&gt;R||a[x].R&lt;L)return 0;</span><br><span class="line">	if(a[x].L&gt;=L&amp;&amp;a[x].R&lt;=R)return a[x].ans;</span><br><span class="line">	return query(x&lt;&lt;1,L,R)+query((x&lt;&lt;1)+1,L,R);</span><br><span class="line">&#125;</span><br><span class="line">signed main()&#123;</span><br><span class="line">	ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m; build(1,1,n);</span><br><span class="line">    while(m--)&#123;</span><br><span class="line">    	cin&gt;&gt;opt&gt;&gt;L&gt;&gt;R;</span><br><span class="line">    	if(opt==1)&#123;</span><br><span class="line">    		int x;cin&gt;&gt;x;</span><br><span class="line">    		change(1,L,R,x);</span><br><span class="line">		&#125;</span><br><span class="line">    	else cout&lt;&lt;query(1,L,R)&lt;&lt;&#x27;\n&#x27;;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E9%80%86%E5%85%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aurouki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E9%80%86%E5%85%83/" itemprop="url">逆元</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T17:31:24+08:00">
+                2024-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM模版</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E6%95%B0%E8%AE%BA/" itemprop="url" rel="index">
+                    <span itemprop="name">数论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="逆元的应用场景——模意义下的除法"><a href="#逆元的应用场景——模意义下的除法" class="headerlink" title="逆元的应用场景——模意义下的除法"></a>逆元的应用场景——模意义下的除法</h3><ol>
+<li>在模意义下，加减乘必然都是可行的，(a*b)%p&#x3D;((a%p) * (b%p))%p ;但是除法是不可行的，(a&#x2F;b)%p $\neq$ (a%p)&#x2F;b </li>
+<li>假设有个值inv[b],(即$b^{-1}$), 满足a &#x2F; b &#x3D; a $\times$ inv[b]，即我们就需要找到满足b$\times$inv[b]%p&#x3D;1的b；根据费马的定理，如果<strong>p是个质数</strong>，则有$b^{p-1}$%p&#x3D;1, 即inv[b]&#x3D;$b^{p-2}$ ，因此这样我们就可以把模意义下的除法改为乘法，需要用到<strong>快速幂（取模)</strong></li>
+<li>逆元的<strong>线性递推公式</strong>:当p为质数时，必然有<strong>inv[i]&#x3D;inv[p%i]*(p-p&#x2F;i)%p</strong>，可以在复杂度为O(n)的情况下求出1-n的逆元：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">inv[1]=1;cout&lt;&lt;1&lt;&lt;endl;</span><br><span class="line">for(int i=2;i&lt;=n;i++)</span><br><span class="line">    inv[i]=inv[p%i]*(p-p/i)%p,cout&lt;&lt;inv[i]&lt;&lt;endl;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/%E6%AC%A7%E6%8B%89%E7%AD%9B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -862,629 +1786,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/%E6%B5%AE%E7%82%B9%E6%95%B0%E4%BA%8C%E5%88%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/profile.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aurouki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/%E6%B5%AE%E7%82%B9%E6%95%B0%E4%BA%8C%E5%88%86/" itemprop="url">浮点数二分</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T17:06:12+08:00">
-                2024-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM模版</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">基础算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#define double eps=&lt;精度&gt;（尽可能小）</span><br><span class="line">bool check(&lt;参数&gt;)&#123;	//用于实现满足题意的条件</span><br><span class="line">    ...</span><br><span class="line">    return&lt;条件&gt;;</span><br><span class="line">&#125;</span><br><span class="line">double l = &lt;下界&gt;,r = &lt;上界&gt;, ans;</span><br><span class="line">while(r-l&gt;=eps) &#123;</span><br><span class="line">    double mid=(l + r) / 2;</span><br><span class="line">    if (check(mid))</span><br><span class="line">        ans = mid, l = mid ; / r = mid ;</span><br><span class="line">                (找最大值) (找最小值)</span><br><span class="line">    else</span><br><span class="line">        r = mid ; / l = mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%88%E5%8F%96%E6%A8%A1%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/profile.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aurouki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%88%E5%8F%96%E6%A8%A1%EF%BC%89/" itemprop="url">快速幂（取模）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T16:54:50+08:00">
-                2024-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM模版</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">基础算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int power_mod(int a, int b, int mod)&#123;</span><br><span class="line">    int res = 1;</span><br><span class="line">    a = a % mod;</span><br><span class="line">    while (b) &#123;</span><br><span class="line">        if (b &amp; 1) res = (res % mod * a % mod) % mod;</span><br><span class="line">        b &gt;&gt;= 1;</span><br><span class="line">        a = (a % mod * a % mod) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/abc351/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/profile.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aurouki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/abc351/" itemprop="url">abc351</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T16:30:51+08:00">
-                2024-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AF%94%E8%B5%9B%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
-                    <span itemprop="name">比赛题解</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AF%94%E8%B5%9B%E9%A2%98%E8%A7%A3/Atcoder/" itemprop="url" rel="index">
-                    <span itemprop="name">Atcoder</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AF%94%E8%B5%9B%E9%A2%98%E8%A7%A3/Atcoder/abc/" itemprop="url" rel="index">
-                    <span itemprop="name">abc</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Atcoder-Beginner-Contest-351"><a href="#Atcoder-Beginner-Contest-351" class="headerlink" title="Atcoder Beginner Contest 351"></a>Atcoder Beginner Contest 351</h1><h2 id="A-The-bottom-of-the-ninth-模拟"><a href="#A-The-bottom-of-the-ninth-模拟" class="headerlink" title="A - The bottom of the ninth(模拟)"></a>A - The bottom of the ninth(模拟)</h2><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;两支队伍A,B正在进行比赛,比赛分为上半和下半两场各有<strong>9局</strong>,已知上半局<strong>A的全部</strong>得分和下半局<strong>B的前8局</strong>得分,问B的最后一局得分至少是多少才能使得B的总分<strong>严格大于</strong>A?</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;设所有A的总和<strong>sum_A</strong>&#x3D; $\sum_ {i&#x3D;1}^9 A_{i}\quad$,前八局B的总和<strong>sum_B</strong>为$\sum_ {i&#x3D;1}^8 B_{i}$;易知，当sum_A$\geq$sum_B时,此时B需要<strong>sum_A-sum_B+1</strong>的得分，反之，B已经严格高于A的得分.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define int long long</span><br><span class="line">#define endl &#x27;\n&#x27; </span><br><span class="line">using namespace std;</span><br><span class="line">int a[15], b[15];</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">    int sum1 = 0, sum2 = 0;</span><br><span class="line">    for (int i = 1; i &lt;= 9;i++)</span><br><span class="line">        cin &gt;&gt; a[i], sum1 += a[i];</span><br><span class="line">    for (int i = 1; i &lt; 9; i++)</span><br><span class="line">        cin &gt;&gt; b[i], sum2 +=  b[i];</span><br><span class="line">    int ans = max(sum1 - sum2 + 1, 0LL);</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="B-Spot-the-Difference-模拟"><a href="#B-Spot-the-Difference-模拟" class="headerlink" title="B - Spot the Difference(模拟)"></a>B - Spot the Difference(模拟)</h2><h3 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h3><p>两个N$\times$N的网格，已知这两个网格<strong>有且只有一个</strong>位置(i,j)内的字符不同。请找出这个(i,j)的位置，行列的下标<strong>从1开始</strong>编号。</p>
-<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><ul>
-<li>$1 \leq N \leq 100$</li>
-<li>$A_{i,j}$,$B_{i,j}$均为小写字母</li>
-</ul>
-<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>由于N的范围极小，输入两个方格后直接按行遍历即可，找到第一个不同的字符位置就是答案.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define int long long</span><br><span class="line">#define endl &#x27;\n&#x27; </span><br><span class="line">using namespace std;</span><br><span class="line">char a[105][105], b[105][105];</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">    int n,sx,sy;cin &gt;&gt; n;</span><br><span class="line">    for (int i = 1; i &lt;= n;i++) cin &gt;&gt; a[i];</span><br><span class="line">    for (int i = 1; i &lt;= n;i++) cin &gt;&gt; b[i];</span><br><span class="line">    for (int i = 1; i &lt;= n;i++)</span><br><span class="line">        for (int j = 0; j &lt; n;j++)</span><br><span class="line">            if(a[i][j] != b[i][j])</span><br><span class="line">                sx = i, sy = j + 1;</span><br><span class="line">    cout &lt;&lt; sx &lt;&lt; &#x27; &#x27; &lt;&lt; sy;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="C-Merge-the-balls-栈"><a href="#C-Merge-the-balls-栈" class="headerlink" title="C - Merge the balls(栈)"></a>C - Merge the balls(栈)</h2><h3 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;拥有N个球，其中每个球的体积大小为$2^{A_{i}}$,<strong>从i&#x3D;1开始</strong>依次将球装进盒子里。每次装完球后执行以下操作：</p>
-<ol>
-<li>若当前只有一个球，则结束操作</li>
-<li>若最靠右的两个球体积不等，则结束操作</li>
-<li>若最靠右的两个球体积相等，则将其合并为一个球，<strong>体积翻倍</strong>，并<em>返回步骤1</em>重新操作；</li>
-</ol>
-<h3 id="数据范围-1"><a href="#数据范围-1" class="headerlink" title="数据范围"></a>数据范围</h3><ul>
-<li>$1$ $\leq$ $N$ $\leq$ $2\times10^5$</li>
-<li>$0$ $\leq$ $A_{i}$ $\leq$ $10^9$</li>
-</ul>
-<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;由于每次是从右往左依次合并，符合“<strong>后进先出</strong>”的特征，所以可以用<strong>栈</strong>去模拟合并的过程。对于每次的合并，显然只有<strong>相同的指数</strong>可以进行相加，又$2^i$+$2^i$&#x3D;$2^{i+1}$，故主需要在栈内丢入指数，合并时将<strong>指数加一</strong>。最终输出栈内的元素数量即可.<br>&nbsp;&nbsp;&nbsp;&nbsp;虽然N高达$2\times10^5$，但是从感性方面去理解，每合并一次数量减一，从最坏情况去考虑，加入一个球后前面全部进行合并，但从该球往后整个盒子内的球数再度变为1…所以整体的复杂度还是O(N)量级的</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define int long long</span><br><span class="line">#define endl &#x27;\n&#x27; </span><br><span class="line">using namespace std;</span><br><span class="line">int a[200010],stk[200010];</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">    int n;cin &gt;&gt; n;</span><br><span class="line">    for (int i = 1; i &lt;= n;i++) cin &gt;&gt; a[i];</span><br><span class="line">    int top = 0;stk[++top] = a[1];</span><br><span class="line">    for (int i = 2;i &lt;= n;i++)&#123;</span><br><span class="line">        stk[++top] = a[i];</span><br><span class="line">        while(stk[top] == stk[top-1])&#123;</span><br><span class="line">            stk[top - 1] = stk[top] + 1;</span><br><span class="line">            top--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; top &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="D-Grid-and-Magnet"><a href="#D-Grid-and-Magnet" class="headerlink" title="D - Grid and Magnet"></a>D - Grid and Magnet</h2><p>待补</p>
-<h2 id="E-Jump-Distance-Sum"><a href="#E-Jump-Distance-Sum" class="headerlink" title="E - Jump Distance Sum"></a>E - Jump Distance Sum</h2><p>待补</p>
-<h2 id="F-Double-Sum-树状数组-离散化"><a href="#F-Double-Sum-树状数组-离散化" class="headerlink" title="F - Double Sum(树状数组+离散化)"></a>F - Double Sum(树状数组+离散化)</h2><h3 id="题意-3"><a href="#题意-3" class="headerlink" title="题意"></a>题意</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;给定一个整数序列 A&#x3D;($A_1$,$A_2$…$A_N$),计算以下表达式：<br>$\sum\limits_{i&#x3D;1}^{N}\sum\limits_{j&#x3D;i+1}^{N}max(A_j-A_i,0)$</p>
-<h3 id="数据范围-2"><a href="#数据范围-2" class="headerlink" title="数据范围"></a>数据范围</h3><ul>
-<li>$2 \leq N \leq 4\times10^5$</li>
-<li>$0 \leq A_i \leq 10^8$ </li>
-<li>保证答案小于$2^{63}$</li>
-</ul>
-<h3 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;形式化地，$\sum\limits_{i&#x3D;1}^{N}$$\sum\limits_{j&#x3D;i+1}^{N}$$max(A_j-A_i,0)$ 等价于当i &lt; j 时，所有$A_j&gt;A_i$的<strong>逆序对的差值和</strong>，其中$i\in[1,n-1],j\in[i+1,n]$.顾名思义，设对于任意的i，其逆序对的数量为num,则其对答案的贡献为$\sum\limits_{j&#x3D;i+1}^{N}A_j[A_j&gt;A_i]-num<em>A_i$.所以我们需要知道其<strong>数量</strong>和对应的*<em>值的总和</em></em>.<br>&nbsp;&nbsp;&nbsp;&nbsp;从逆序对数量的角度出发，我们以往可以通过<strong>树状数组</strong>模拟<strong>桶</strong>去维护小于等于某个数的<strong>数量</strong>，同样，我们也可以去维护小于某个数的<strong>总和</strong>；对于逆序对的求解，我们选择<strong>从i-1开始倒序</strong>模拟本题需要求的条件是大于，所以需要进行转换，大于$A_i$的数量只需要用区间的总数量减去小于等于$A_i$的总数量，即$(N-i)-\sum\limits_{j&#x3D;i+1}^{N}1[A_j \leq A_i]$,同理，大于$A_i$的总和为$\sum\limits_{j&#x3D;i+1}^{N}A_j-\sum\limits_{j&#x3D;i+1}^{N}A_j[A_j \leq A_i]$，其中，区间的总和可以用<strong>前缀和</strong>实现.<br>&nbsp;&nbsp;&nbsp;&nbsp;同时，因为$A_i$的值最高的值为$10^8$，已经远远超过了<strong>桶</strong>的承受范围，所以需要对$A_i$进行<strong>离散化</strong>操作，但是求和的时候必须用到的是真实值，所以还需要再开一个数组保存原始数值，以便在求和的时候<strong>通过下标索引到真实值</strong>.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define int long long</span><br><span class="line">#define endl &#x27;\n&#x27; </span><br><span class="line">#define INF 1e15</span><br><span class="line">using namespace std;</span><br><span class="line">struct node&#123;</span><br><span class="line">    int val, id;</span><br><span class="line">    //按照val的大小进行重载</span><br><span class="line">    bool operator&lt;(const node s)const&#123;</span><br><span class="line">        return val &lt; s.val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;a[400010];</span><br><span class="line">int b[400010], c[400010], pre[400010];</span><br><span class="line">//b数组表示离散化后的值，c数组表示原始值，pre数组表示原始值的前缀和</span><br><span class="line">int cnt[400010], sum[400010];</span><br><span class="line">//cnt[i]表示小于等于i的数量，sum[i]表示小于等于i的总和</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    for (int i = 1; i &lt;= n;i++)&#123;</span><br><span class="line">        cin &gt;&gt; a[i].val, a[i].id = i;</span><br><span class="line">        pre[i] = pre[i - 1] + a[i].val;</span><br><span class="line">    &#125;</span><br><span class="line">    //分别对数量和值建立“单点修改、区间查询”的树状数组</span><br><span class="line">    auto add1 = [&amp;](int x, int k) -&gt; void&#123;</span><br><span class="line">        for (int i = x; i &lt;= 4e5; i += i &amp; (-i))</span><br><span class="line">            cnt[i] += k;</span><br><span class="line">    &#125;;</span><br><span class="line">    auto add2 = [&amp;](int x, int k) -&gt; void&#123;</span><br><span class="line">        for (int i = x; i &lt;= 4e5; i += i &amp; (-i))</span><br><span class="line">            sum[i] += k;</span><br><span class="line">    &#125;;</span><br><span class="line">    auto query1 = [&amp;](int x) -&gt; int&#123;</span><br><span class="line">        int res = 0;</span><br><span class="line">        for (int i = x; i; i -= i &amp; (-i))</span><br><span class="line">            res += cnt[i];</span><br><span class="line">        return res;</span><br><span class="line">    &#125;;</span><br><span class="line">    auto query2 = [&amp;](int x) -&gt; int&#123;</span><br><span class="line">        int res = 0;</span><br><span class="line">        for (int i = x; i; i -= i &amp; (-i))</span><br><span class="line">            res += sum[i];</span><br><span class="line">        return res;</span><br><span class="line">    &#125;;</span><br><span class="line">    for (int i = 1; i &lt;= n;i++)</span><br><span class="line">        c[i] = a[i].val;</span><br><span class="line">    //离散化操作</span><br><span class="line">    sort(a + 1, a + n + 1);</span><br><span class="line">    for (int i = 1;i&lt;=n;i++)&#123;</span><br><span class="line">        b[a[i].id] = i;</span><br><span class="line">        if (i &gt; 1 &amp;&amp; a[i].val == a[i - 1].val)</span><br><span class="line">            b[a[i].id] = b[a[i - 1].id];</span><br><span class="line">    &#125;</span><br><span class="line">    int ans = 0;</span><br><span class="line">    //倒序求逆序对</span><br><span class="line">    for (int i = n - 1; i &gt;= 1;i--)&#123;</span><br><span class="line">        //前者插入数量1，后者插入真实值c[i+1]</span><br><span class="line">        add1(b[i + 1], 1), add2(b[i + 1], c[i + 1]);</span><br><span class="line">        int cnt1 = (n - i) - query1(b[i]);</span><br><span class="line">        int sum1 = (pre[n] - pre[i]) - query2(b[i]);</span><br><span class="line">        ans += sum1 - cnt1 * c[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/profile.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Aurouki">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hello-world/" itemprop="url">个人博客</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-01T13:19:34+08:00">
-                2024-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </nav>
+
 
 
           </div>
@@ -1532,7 +1840,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1543,7 +1851,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1554,7 +1862,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
