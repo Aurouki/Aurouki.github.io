@@ -373,6 +373,468 @@ mjx-container[display="true"] + br {
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E6%AC%A7%E6%8B%89%E7%AD%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aurouki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E6%AC%A7%E6%8B%89%E7%AD%9B/" itemprop="url">欧拉筛</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T17:24:28+08:00">
+                2024-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM模版</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E6%95%B0%E8%AE%BA/" itemprop="url" rel="index">
+                    <span itemprop="name">数论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">bool numlist[100000001];</span><br><span class="line">int prime[20000001], cnt;</span><br><span class="line">void work(int n)&#123;</span><br><span class="line">    for(int i=2; i&lt;=n; i++)&#123;</span><br><span class="line">	    if(numlist[i]==false)</span><br><span class="line">	    	prime[++cnt] = i;</span><br><span class="line">	    for(int j=1; j&lt;=cnt&amp;&amp;i*prime[j]&lt;=n; j++)&#123;</span><br><span class="line">	        numlist[i*prime[j]] = 1;</span><br><span class="line">	    	if(i%prime[j]==0)</span><br><span class="line">                    break;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">	return;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E7%BB%84%E5%90%88%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aurouki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E7%BB%84%E5%90%88%E6%95%B0/" itemprop="url">组合数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T17:20:38+08:00">
+                2024-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM模版</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E6%95%B0%E8%AE%BA/" itemprop="url" rel="index">
+                    <span itemprop="name">数论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>采用<strong>阶乘逆元</strong>的相关知识，可以在预处理阶乘后以O(1)查询组合数，其中，p必须是一个<strong>质数</strong><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int C(int x,int y)&#123;</span><br><span class="line">    return 1ll*jc[x]*njc[y]%p*njc[x-y]%p;</span><br><span class="line">&#125;</span><br><span class="line">for(int i=0;i&lt;2;i++)jc[i]=njc[i]=inv[i]=1;//阶乘，阶乘逆元，逆元</span><br><span class="line">for(int i=2;i&lt;=100001;i++)&#123;</span><br><span class="line">    jc[i]=1ll*jc[i-1]*i%p;</span><br><span class="line">    inv[i]=1ll*inv[p%i]*(p-p/i)%p;</span><br><span class="line">    njc[i]=1ll*njc[i-1]*inv[i]%p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E4%BD%8D%E8%BF%90%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aurouki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E4%BD%8D%E8%BF%90%E7%AE%97/" itemprop="url">位运算</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T17:13:29+08:00">
+                2024-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM模版</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">基础算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="实用公式："><a href="#实用公式：" class="headerlink" title="实用公式："></a>实用公式：</h2><h3 id="a-b-a-b-a-amp-b"><a href="#a-b-a-b-a-amp-b" class="headerlink" title="a + b = a | b + a &amp; b"></a>a + b = a | b + a &amp; b</h3><h4 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h4><h5 id="性质：两个数异或相当于各位进行无进制的二进制加法"><a href="#性质：两个数异或相当于各位进行无进制的二进制加法" class="headerlink" title="性质：两个数异或相当于各位进行无进制的二进制加法"></a>性质：两个数异或相当于各位进行<strong>无进制的二进制加法</strong></h5><h5 id="重要公式："><a href="#重要公式：" class="headerlink" title="重要公式："></a>重要公式：</h5><p><strong>1^1=0 $\iff$ x^x=0</strong><br><strong>a^b=x $\iff$ a^x=b</strong></p>
+<h4 id="builtin-popcount函数（统计二进制中‘1’的个数）"><a href="#builtin-popcount函数（统计二进制中‘1’的个数）" class="headerlink" title="__builtin_popcount函数（统计二进制中‘1’的个数）"></a>__builtin_popcount函数（统计二进制中‘1’的个数）</h4><ol>
+<li>__builtin_popcount(unsigned int n) //返回int类型</li>
+<li>__builtin_popcountll(unsigned int n) //返回long long类型</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/%E4%B8%89%E5%88%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1174,7 +1636,7 @@ mjx-container[display="true"] + br {
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1185,7 +1647,7 @@ mjx-container[display="true"] + br {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1196,7 +1658,7 @@ mjx-container[display="true"] + br {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
