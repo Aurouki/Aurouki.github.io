@@ -373,7 +373,7 @@ mjx-container[display="true"] + br {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/%E6%AC%A7%E6%8B%89%E7%AD%9B/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -392,7 +392,316 @@ mjx-container[display="true"] + br {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/%E6%AC%A7%E6%8B%89%E7%AD%9B/" itemprop="url">欧拉筛</a></h1>
+                <a class="post-title-link" href="/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url">线段树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T18:44:06+08:00">
+                2024-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM模版</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="经典区间求和、区间修改"><a href="#经典区间求和、区间修改" class="headerlink" title="经典区间求和、区间修改"></a>经典区间求和、区间修改</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define endl &#x27;\n&#x27; </span><br><span class="line">using i64 = long long;</span><br><span class="line">using namespace std;</span><br><span class="line">struct segment_tree&#123;</span><br><span class="line">    int L, R, size;</span><br><span class="line">    i64 lazy, ans;</span><br><span class="line">&#125; a[400010];</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);</span><br><span class="line">    cin.tie(0);</span><br><span class="line">    int n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    auto up = [&amp;](int x) -&gt; void</span><br><span class="line">    &#123;</span><br><span class="line">        a[x].ans = a[x &lt;&lt; 1].ans + a[(x &lt;&lt; 1) + 1].ans;</span><br><span class="line">    &#125;;</span><br><span class="line">    auto down = [&amp;](int x) -&gt; void</span><br><span class="line">    &#123;</span><br><span class="line">        if (!a[x].lazy)</span><br><span class="line">            return;</span><br><span class="line">        a[x].ans += a[x].lazy * a[x].size;</span><br><span class="line">        if (a[x].L != a[x].R)&#123;</span><br><span class="line">            a[x &lt;&lt; 1].lazy += a[x].lazy;</span><br><span class="line">            a[(x &lt;&lt; 1) + 1].lazy += a[x].lazy;</span><br><span class="line">        &#125;</span><br><span class="line">        a[x].lazy = 0;</span><br><span class="line">    &#125;;</span><br><span class="line">    auto build = [&amp;](auto bulid, int x, int L, int R) -&gt; void</span><br><span class="line">    &#123;</span><br><span class="line">        a[x].L = L, a[x].R = R, a[x].size = R - L + 1;</span><br><span class="line">        if (L == R)&#123;</span><br><span class="line">            cin &gt;&gt; a[x].ans;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        const int mid = L + R &gt;&gt; 1;</span><br><span class="line">        bulid(bulid, x &lt;&lt; 1, L, mid);</span><br><span class="line">        bulid(bulid, (x &lt;&lt; 1) + 1, mid + 1, R);</span><br><span class="line">        up(x);</span><br><span class="line">    &#125;;</span><br><span class="line">    auto change = [&amp;](auto change, int x, int L, int R, i64 val) -&gt; void</span><br><span class="line">    &#123;</span><br><span class="line">        down(x);</span><br><span class="line">        if (a[x].L &gt; R || a[x].R &lt; L)</span><br><span class="line">            return;</span><br><span class="line">        if (a[x].L &gt;= L &amp;&amp; a[x].R &lt;= R)&#123;</span><br><span class="line">            a[x].lazy += val;</span><br><span class="line">            down(x);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        change(change, x &lt;&lt; 1, L, R, val);</span><br><span class="line">        change(change, (x &lt;&lt; 1) + 1, L, R, val);</span><br><span class="line">        up(x);</span><br><span class="line">    &#125;;</span><br><span class="line">    auto query = [&amp;](auto query, int x, int L, int R) -&gt; i64</span><br><span class="line">    &#123;</span><br><span class="line">        down(x);</span><br><span class="line">        if (a[x].L &gt; R || a[x].R &lt; L)</span><br><span class="line">            return 0;</span><br><span class="line">        if (a[x].L &gt;= L &amp;&amp; a[x].R &lt;= R)</span><br><span class="line">            return a[x].ans;</span><br><span class="line">        return query(query, x &lt;&lt; 1, L, R) + query(query, (x &lt;&lt; 1) + 1, L, R);</span><br><span class="line">    &#125;;</span><br><span class="line">    build(build, 1, 1, n);</span><br><span class="line">    while (m--)&#123;</span><br><span class="line">        int opt, L, R;</span><br><span class="line">        cin &gt;&gt; opt &gt;&gt; L &gt;&gt; R;</span><br><span class="line">        if (opt == 1)&#123;</span><br><span class="line">            i64 x;</span><br><span class="line">            cin &gt;&gt; x;</span><br><span class="line">            change(change, 1, L, R, x);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            cout &lt;&lt; query(query, 1, L, R) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E9%80%86%E5%85%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aurouki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E9%80%86%E5%85%83/" itemprop="url">逆元</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T17:31:24+08:00">
+                2024-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM模版</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E6%95%B0%E8%AE%BA/" itemprop="url" rel="index">
+                    <span itemprop="name">数论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="逆元的应用场景——模意义下的除法"><a href="#逆元的应用场景——模意义下的除法" class="headerlink" title="逆元的应用场景——模意义下的除法"></a>逆元的应用场景——模意义下的除法</h3><ol>
+<li>在模意义下，加减乘必然都是可行的，(a<em>b)%p=((a%p) </em> (b%p))%p ;但是除法是不可行的，(a/b)%p <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.486ex;" xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="2.106ex" role="img" focusable="false" viewBox="0 -716 778 931"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2260" d="M166 -215T159 -215T147 -212T141 -204T139 -197Q139 -190 144 -183L306 133H70Q56 140 56 153Q56 168 72 173H327L406 327H72Q56 332 56 347Q56 360 70 367H426Q597 702 602 707Q605 716 618 716Q625 716 630 712T636 703T638 696Q638 692 471 367H707Q722 359 722 347Q722 336 708 328L451 327L371 173H708Q722 163 722 153Q722 140 707 133H351Q175 -210 170 -212Q166 -215 159 -215Z"></path></g></g></g></svg></mjx-container> (a%p)/b </li>
+<li>假设有个值inv[b],(即<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="3.203ex" height="1.912ex" role="img" focusable="false" viewBox="0 -833.9 1415.7 844.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g><g data-mml-node="TeXAtom" transform="translate(462,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(778,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></g></g></svg></mjx-container>), 满足a / b = a <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0.02ex;" xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="1.09ex" role="img" focusable="false" viewBox="0 -491 778 482"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></g></g></g></svg></mjx-container> inv[b]，即我们就需要找到满足b<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0.02ex;" xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="1.09ex" role="img" focusable="false" viewBox="0 -491 778 482"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></g></g></g></svg></mjx-container>inv[b]%p=1的b；根据费马的定理，如果<strong>p是个质数</strong>，则有<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="4.008ex" height="1.912ex" role="img" focusable="false" viewBox="0 -833.9 1771.4 844.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g><g data-mml-node="TeXAtom" transform="translate(462,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="mo" transform="translate(503,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(1281,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></g></g></svg></mjx-container>%p=1, 即inv[b]=<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="4.008ex" height="1.912ex" role="img" focusable="false" viewBox="0 -833.9 1771.4 844.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g><g data-mml-node="TeXAtom" transform="translate(462,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="mo" transform="translate(503,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(1281,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></g></g></svg></mjx-container> ，因此这样我们就可以把模意义下的除法改为乘法，需要用到<strong>快速幂（取模)</strong><h4 id="Code-求-dfrac-a-b-mod-p"><a href="#Code-求-dfrac-a-b-mod-p" class="headerlink" title="Code(求$\dfrac{a}{b}(mod \; p)$):"></a>Code(求<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -1.577ex;" xmlns="http://www.w3.org/2000/svg" width="9.98ex" height="4.104ex" role="img" focusable="false" viewBox="0 -1117 4411 1814"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mstyle"><g data-mml-node="mfrac"><g data-mml-node="mi" transform="translate(220,676)"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mi" transform="translate(270,-686)"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g><rect width="729" height="60" x="120" y="220"></rect></g></g><g data-mml-node="mo" transform="translate(969,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mi" transform="translate(1358,0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(2236,0)"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path></g><g data-mml-node="mi" transform="translate(2721,0)"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></g><g data-mml-node="mstyle" transform="translate(3241,0)"><g data-mml-node="mspace"></g></g><g data-mml-node="mi" transform="translate(3519,0)"><path data-c="1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></g><g data-mml-node="mo" transform="translate(4022,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></mjx-container>):</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define endl '\n' </span><br><span class="line">using i64 = long long;</span><br><span class="line">using namespace std;</span><br><span class="line">const int p = 1e9 + 7;</span><br><span class="line">i64 power_mod(i64 a, i64 b, i64 mod){ //快速幂取模</span><br><span class="line">	i64 res = 1;</span><br><span class="line">	a = a % mod;</span><br><span class="line">	while (b){</span><br><span class="line">		if (b &amp; 1)</span><br><span class="line">			res = (res * a) % mod;</span><br><span class="line">		b /= 2;</span><br><span class="line">		a = (a * a) % mod;</span><br><span class="line">	}</span><br><span class="line">	return res;</span><br><span class="line">}</span><br><span class="line">signed main(){</span><br><span class="line">	std::ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">	i64 a, b, ans;</span><br><span class="line">	cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">	i64 inv = power_mod(b, p - 2, p); //乘法逆元值b^(p-2)(mod p)</span><br><span class="line">	ans = (a * inv) % p;</span><br><span class="line">	return 0;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></li>
+<li>逆元的<strong>线性递推公式</strong>:当p为质数时，必然有<strong>inv[i]=inv[p%i]*(p-p/i)%p</strong>，可以在复杂度为O(n)的情况下求出1-n的逆元：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">inv[1]=1;cout&lt;&lt;1&lt;&lt;endl;</span><br><span class="line">for(int i=2;i&lt;=n;i++)</span><br><span class="line">    inv[i]=inv[p%i]*(p-p/i)%p,cout&lt;&lt;inv[i]&lt;&lt;endl;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E7%BA%BF%E6%80%A7%E7%AD%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/profile.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aurouki">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/%E7%BA%BF%E6%80%A7%E7%AD%9B/" itemprop="url">线性筛</a></h1>
         
 
         <div class="post-meta">
@@ -477,7 +786,8 @@ mjx-container[display="true"] + br {
       
         
           
-            <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">bool numlist[100000001];</span><br><span class="line">int prime[20000001], cnt;</span><br><span class="line">void work(int n)&#123;</span><br><span class="line">    for(int i=2; i&lt;=n; i++)&#123;</span><br><span class="line">	    if(numlist[i]==false)</span><br><span class="line">	    	prime[++cnt] = i;</span><br><span class="line">	    for(int j=1; j&lt;=cnt&amp;&amp;i*prime[j]&lt;=n; j++)&#123;</span><br><span class="line">	        numlist[i*prime[j]] = 1;</span><br><span class="line">	    	if(i%prime[j]==0)</span><br><span class="line">                    break;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">	return;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+            <h2 id="素数筛（欧拉筛）"><a href="#素数筛（欧拉筛）" class="headerlink" title="素数筛（欧拉筛）"></a>素数筛（欧拉筛）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">bool numlist[100000001];</span><br><span class="line">int prime[20000001], cnt;</span><br><span class="line">auto work=[&amp;](int n) -&gt; void</span><br><span class="line">{</span><br><span class="line">    for(int i=2; i &lt;= n; i++){</span><br><span class="line">	    if(numlist[i] == false)</span><br><span class="line">	    	prime[++cnt] = i;</span><br><span class="line">	    for(int j = 1; j &lt;= cnt &amp;&amp; i * prime[j] &lt;= n; j++){</span><br><span class="line">	        numlist[i*prime[j]] = 1;</span><br><span class="line">	    	if(i % prime[j] == 0)</span><br><span class="line">                break;</span><br><span class="line">		} </span><br><span class="line">	}</span><br><span class="line">} </span><br></pre></td></tr></table></figure>
+<h2 id="mu-函数筛"><a href="#mu-函数筛" class="headerlink" title="$\mu$函数筛"></a><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.489ex;" xmlns="http://www.w3.org/2000/svg" width="1.364ex" height="1.489ex" role="img" focusable="false" viewBox="0 -442 603 658"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D707" d="M58 -216Q44 -216 34 -208T23 -186Q23 -176 96 116T173 414Q186 442 219 442Q231 441 239 435T249 423T251 413Q251 401 220 279T187 142Q185 131 185 107V99Q185 26 252 26Q261 26 270 27T287 31T302 38T315 45T327 55T338 65T348 77T356 88T365 100L372 110L408 253Q444 395 448 404Q461 431 491 431Q504 431 512 424T523 412T525 402L449 84Q448 79 448 68Q448 43 455 35T476 26Q485 27 496 35Q517 55 537 131Q543 151 547 152Q549 153 557 153H561Q580 153 580 144Q580 138 575 117T555 63T523 13Q510 0 491 -8Q483 -10 467 -10Q446 -10 429 -4T402 11T385 29T376 44T374 51L368 45Q362 39 350 30T324 12T288 -4T246 -11Q199 -11 153 12L129 -85Q108 -167 104 -180T92 -202Q76 -216 58 -216Z"></path></g></g></g></svg></mjx-container>函数筛</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">auto getMu=[&amp;]()-&gt;void{</span><br><span class="line">    mu[1] = 1;</span><br><span class="line">    for (int i = 2; i &lt;= n; ++i) {</span><br><span class="line">	    if (!flg[i]) p[++tot] = i, mu[i] = -1;</span><br><span class="line">	    for (int j = 1; j &lt;= tot &amp;&amp; i * p[j] &lt;= n; ++j) {</span><br><span class="line">	    flg[i * p[j]] = 1;</span><br><span class="line">	    if (i % p[j] == 0) {</span><br><span class="line">		    mu[i * p[j]] = 0;</span><br><span class="line">		    break;</span><br><span class="line">    }</span><br><span class="line">    mu[i * p[j]] = -mu[i];</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line">};</span><br></pre></td></tr></table></figure>
           
         
       
@@ -782,7 +1092,7 @@ mjx-container[display="true"] + br {
       
         
           
-            <h2 id="实用公式："><a href="#实用公式：" class="headerlink" title="实用公式："></a>实用公式：</h2><h3 id="a-b-a-b-a-amp-b"><a href="#a-b-a-b-a-amp-b" class="headerlink" title="a + b = a | b + a &amp; b"></a>a + b = a | b + a &amp; b</h3><h4 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h4><h5 id="性质：两个数异或相当于各位进行无进制的二进制加法"><a href="#性质：两个数异或相当于各位进行无进制的二进制加法" class="headerlink" title="性质：两个数异或相当于各位进行无进制的二进制加法"></a>性质：两个数异或相当于各位进行<strong>无进制的二进制加法</strong></h5><h5 id="重要公式："><a href="#重要公式：" class="headerlink" title="重要公式："></a>重要公式：</h5><p><strong>1^1=0 $\iff$ x^x=0</strong><br><strong>a^b=x $\iff$ a^x=b</strong></p>
+            <h2 id="实用公式："><a href="#实用公式：" class="headerlink" title="实用公式："></a>实用公式：</h2><h3 id="a-b-a-b-a-amp-b"><a href="#a-b-a-b-a-amp-b" class="headerlink" title="a + b = a | b + a & b"></a>a + b = a | b + a &amp; b</h3><h3 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h3><h4 id="性质：两个数异或相当于各位进行无进制的二进制加法"><a href="#性质：两个数异或相当于各位进行无进制的二进制加法" class="headerlink" title="性质：两个数异或相当于各位进行无进制的二进制加法"></a>性质：两个数异或相当于各位进行<strong>无进制的二进制加法</strong></h4><h4 id="重要公式："><a href="#重要公式：" class="headerlink" title="重要公式："></a>重要公式：</h4><p><strong>1^1=0 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex;" xmlns="http://www.w3.org/2000/svg" width="5.462ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 2414 549"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mstyle"><g data-mml-node="mspace"></g></g><g data-mml-node="mo" transform="translate(278,0)"><path data-c="27FA" d="M1438 514Q1438 525 1454 525Q1459 525 1462 525T1467 525T1471 524T1473 523T1475 520T1477 517T1480 512Q1517 438 1578 381T1689 300T1785 263Q1802 258 1802 250T1793 239T1756 228T1698 204Q1554 134 1480 -12Q1476 -21 1473 -22T1458 -24Q1438 -24 1438 -17Q1438 -13 1443 0Q1478 69 1529 123L1539 133H318L328 123Q379 69 414 0Q419 -13 419 -17Q419 -24 399 -24Q388 -24 385 -23T377 -12Q332 77 253 144T72 237Q62 240 59 242T56 250T59 257T70 262T89 268T119 278T160 296Q303 366 377 512Q382 522 385 523T401 525Q419 524 419 515Q419 510 414 500Q379 431 328 377L318 367H1539L1529 377Q1496 412 1467 458T1438 514ZM274 173H1583L1593 181Q1632 211 1710 250Q1709 251 1692 259T1647 283T1593 319L1583 327H930L927 328L602 327H274L264 319Q225 289 147 250Q148 249 165 241T210 217T264 181L274 173Z"></path></g><g data-mml-node="mstyle" transform="translate(2136,0)"><g data-mml-node="mspace"></g></g></g></g></svg></mjx-container> x^x=0</strong><br><strong>a^b=x <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.054ex;" xmlns="http://www.w3.org/2000/svg" width="5.462ex" height="1.242ex" role="img" focusable="false" viewBox="0 -525 2414 549"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mstyle"><g data-mml-node="mspace"></g></g><g data-mml-node="mo" transform="translate(278,0)"><path data-c="27FA" d="M1438 514Q1438 525 1454 525Q1459 525 1462 525T1467 525T1471 524T1473 523T1475 520T1477 517T1480 512Q1517 438 1578 381T1689 300T1785 263Q1802 258 1802 250T1793 239T1756 228T1698 204Q1554 134 1480 -12Q1476 -21 1473 -22T1458 -24Q1438 -24 1438 -17Q1438 -13 1443 0Q1478 69 1529 123L1539 133H318L328 123Q379 69 414 0Q419 -13 419 -17Q419 -24 399 -24Q388 -24 385 -23T377 -12Q332 77 253 144T72 237Q62 240 59 242T56 250T59 257T70 262T89 268T119 278T160 296Q303 366 377 512Q382 522 385 523T401 525Q419 524 419 515Q419 510 414 500Q379 431 328 377L318 367H1539L1529 377Q1496 412 1467 458T1438 514ZM274 173H1583L1593 181Q1632 211 1710 250Q1709 251 1692 259T1647 283T1593 319L1583 327H930L927 328L602 327H274L264 319Q225 289 147 250Q148 249 165 241T210 217T264 181L274 173Z"></path></g><g data-mml-node="mstyle" transform="translate(2136,0)"><g data-mml-node="mspace"></g></g></g></g></svg></mjx-container> a^x=b</strong></p>
 <h4 id="builtin-popcount函数（统计二进制中‘1’的个数）"><a href="#builtin-popcount函数（统计二进制中‘1’的个数）" class="headerlink" title="__builtin_popcount函数（统计二进制中‘1’的个数）"></a>__builtin_popcount函数（统计二进制中‘1’的个数）</h4><ol>
 <li>__builtin_popcount(unsigned int n) //返回int类型</li>
 <li>__builtin_popcountll(unsigned int n) //返回long long类型</li>
@@ -1636,7 +1946,7 @@ mjx-container[display="true"] + br {
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
