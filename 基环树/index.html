@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="图论," />
 
 
 
@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="12345678910int power_mod(int a, int b, int mod)&#123;    int res &#x3D; 1;    a &#x3D; a % mod;    while (b) &#123;        if (b &amp; 1) res &#x3D; (res % mod * a % mod) % mod;        b &gt;&gt;&#x3D; 1;        a &#x3D; (a %">
+<meta name="description" content="基环树的定义条边个点的连通图 基环树是一棵”伪树“ 如若不保证连通，它就会成为基环树森林.基环树的形成   无向图   在一棵基于无向图的无根树上加一条边，构成基环树 去掉环上的任意一条边，基环树变为一棵真正的树   有向图   一个DAG(有向无环图)，如果能在图中加一条边能形成一个自联通的环，则形成一棵基环树.基础问题找环1.无向图    使用拓扑排序的BFS实现。 计算所有点的度数，并将度为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="快速幂（取模）">
-<meta property="og:url" content="http://example.com/%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%88%E5%8F%96%E6%A8%A1%EF%BC%89/index.html">
+<meta property="og:title" content="基环树">
+<meta property="og:url" content="http://example.com/%E5%9F%BA%E7%8E%AF%E6%A0%91/index.html">
 <meta property="og:site_name" content="Aurouki">
-<meta property="og:description" content="12345678910int power_mod(int a, int b, int mod)&#123;    int res &#x3D; 1;    a &#x3D; a % mod;    while (b) &#123;        if (b &amp; 1) res &#x3D; (res % mod * a % mod) % mod;        b &gt;&gt;&#x3D; 1;        a &#x3D; (a %">
+<meta property="og:description" content="基环树的定义条边个点的连通图 基环树是一棵”伪树“ 如若不保证连通，它就会成为基环树森林.基环树的形成   无向图   在一棵基于无向图的无根树上加一条边，构成基环树 去掉环上的任意一条边，基环树变为一棵真正的树   有向图   一个DAG(有向无环图)，如果能在图中加一条边能形成一个自联通的环，则形成一棵基环树.基础问题找环1.无向图    使用拓扑排序的BFS实现。 计算所有点的度数，并将度为">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-05-02T08:54:50.000Z">
-<meta property="article:modified_time" content="2024-05-02T09:02:49.718Z">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-6a6141a3328cb9c318b13c79478e9011.png">
+<meta property="article:published_time" content="2024-07-18T00:17:21.000Z">
+<meta property="article:modified_time" content="2024-07-18T01:11:54.406Z">
 <meta property="article:author" content="Melodic">
+<meta property="article:tag" content="图论">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic4.zhimg.com/80/v2-6a6141a3328cb9c318b13c79478e9011.png">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/快速幂（取模）/"/>
+  <link rel="canonical" href="http://example.com/基环树/"/>
 
 
 
 
 
-  <title>快速幂（取模） | Aurouki</title>
+  <title>基环树 | Aurouki</title>
   
 
 
@@ -135,7 +138,119 @@
 
 
 
-<meta name="generator" content="Hexo 7.2.0"></head>
+<meta name="generator" content="Hexo 7.2.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
@@ -262,7 +377,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/%E5%BF%AB%E9%80%9F%E5%B9%82%EF%BC%88%E5%8F%96%E6%A8%A1%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/%E5%9F%BA%E7%8E%AF%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -279,7 +394,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">快速幂（取模）</h1>
+          <h1 class="post-title" itemprop="name headline">基环树</h1>
         
 
         <div class="post-meta">
@@ -291,8 +406,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-05-02T16:54:50+08:00">
-                2024-05-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-07-18T08:17:21+08:00">
+                2024-07-18
               </time>
             
 
@@ -325,8 +440,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">基础算法</span>
+                  <a href="/categories/ACM%E6%A8%A1%E7%89%88/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index">
+                    <span itemprop="name">图论</span>
                   </a>
                 </span>
 
@@ -362,7 +477,28 @@
       
 
       
-        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int power_mod(int a, int b, int mod)&#123;</span><br><span class="line">    int res = 1;</span><br><span class="line">    a = a % mod;</span><br><span class="line">    while (b) &#123;</span><br><span class="line">        if (b &amp; 1) res = (res % mod * a % mod) % mod;</span><br><span class="line">        b &gt;&gt;= 1;</span><br><span class="line">        a = (a % mod * a % mod) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+        <h2 id="基环树的定义"><a href="#基环树的定义" class="headerlink" title="基环树的定义"></a>基环树的定义</h2><h4 id="N-条边-N-个点的连通图"><a href="#N-条边-N-个点的连通图" class="headerlink" title="$N$条边$N$个点的连通图"></a><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.009ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 888 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g></g></g></svg></mjx-container>条边<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.009ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 888 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g></g></g></svg></mjx-container>个点的连通图</h4><ul>
+<li>基环树是一棵”<strong>伪树</strong>“</li>
+<li>如若不保证连通，它就会成为基环树森林.<h2 id="基环树的形成"><a href="#基环树的形成" class="headerlink" title="基环树的形成"></a>基环树的形成</h2></li>
+</ul>
+<ol>
+<li>无向图</li>
+</ol>
+<ul>
+<li>在一棵基于无向图的无根树上<strong>加一条边</strong>，构成基环树</li>
+<li>去掉环上的任意一条边，基环树变为一棵真正的树</li>
+</ul>
+<ol>
+<li>有向图</li>
+</ol>
+<ul>
+<li>一个DAG(有向无环图)，如果能在图中加一条边能形成一个<strong>自联通的环</strong>，则形成一棵基环树.<h2 id="基础问题"><a href="#基础问题" class="headerlink" title="基础问题"></a>基础问题</h2><h3 id="找环"><a href="#找环" class="headerlink" title="找环"></a>找环</h3>1.无向图<br>    使用<strong>拓扑排序的BFS</strong>实现。</li>
+<li>计算所有点的度数，并将<strong>度为1</strong>的点入队列；</li>
+<li>从队列中弹出度为1点，并将其边去掉(<strong>相邻点度数减一</strong>)，若此时相邻点度为1，则放进队列中；<img src="https://pic4.zhimg.com/80/v2-6a6141a3328cb9c318b13c79478e9011.png" alt="Image"></li>
+<li>反复执行，直到队列为空</li>
+</ul>
+<p>    操作结束后<u><strong>统计所有度数大于1</strong></u>的点，即为环上的点.</p>
+
       
     </div>
     
@@ -406,6 +542,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag"># 图论</a>
+          
+        </div>
+      
 
       
       
@@ -415,8 +557,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/abc351/" rel="next" title="abc351">
-                <i class="fa fa-chevron-left"></i> abc351
+              <a href="/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" rel="next" title="拓扑排序">
+                <i class="fa fa-chevron-left"></i> 拓扑排序
               </a>
             
           </div>
@@ -424,10 +566,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/%E6%B5%AE%E7%82%B9%E6%95%B0%E4%BA%8C%E5%88%86/" rel="prev" title="浮点数二分">
-                浮点数二分 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -479,8 +617,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -560,6 +707,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%8E%AF%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">基环树的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#N-%E6%9D%A1%E8%BE%B9-N-%E4%B8%AA%E7%82%B9%E7%9A%84%E8%BF%9E%E9%80%9A%E5%9B%BE"><span class="nav-number">1.0.1.</span> <span class="nav-text">条边个点的连通图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%8E%AF%E6%A0%91%E7%9A%84%E5%BD%A2%E6%88%90"><span class="nav-number">2.</span> <span class="nav-text">基环树的形成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">基础问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E7%8E%AF"><span class="nav-number">3.1.</span> <span class="nav-text">找环</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -768,6 +931,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
