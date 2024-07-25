@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>多校第四场</title>
+      <link href="/%E5%A4%9A%E6%A0%A1%E7%AC%AC%E5%9B%9B%E5%9C%BA/"/>
+      <url>/%E5%A4%9A%E6%A0%A1%E7%AC%AC%E5%9B%9B%E5%9C%BA/</url>
+      
+        <content type="html"><![CDATA[<h2 id="G-Horse-Drinks-Water（模拟，数学）"><a href="#G-Horse-Drinks-Water（模拟，数学）" class="headerlink" title="G.Horse Drinks Water（模拟，数学）"></a>G.Horse Drinks Water（模拟，数学）</h2><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;将军饮马问题：马处于点$(x_G,y_G)$，将军处于点$(x_T,y_T)$，河水位于x轴正半轴与y轴的<strong>正半轴</strong>上，求将军饮马的最短距离.</p><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><ul><li><strong><font Color=Red>$ 0$</font></strong> $\le x_G,y_G,x_T,y_T \le 10^9$</li></ul><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;签到题，由数据范围知，将军和马一定<wavy><strong>同处于第一象限</strong></wavy>，所以将任一点的坐标转换到第二象限，求 <strong><font color=OrangeRed>直线两点的距离</font></strong> 即可。注意浮点数输入输出。</p><h4 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">#define endl &#x27;\n&#x27;</span><br><span class="line">using i64 = long long;</span><br><span class="line">using namespace std;</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);</span><br><span class="line">    cin.tie(0);</span><br><span class="line">    int t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    while (t--)&#123;</span><br><span class="line">        int xg, yg, xt, yt;</span><br><span class="line">        cin &gt;&gt; xg &gt;&gt; yg &gt;&gt; xt &gt;&gt; yt;</span><br><span class="line">        xg *= -1;</span><br><span class="line">        //式子一定要加long long,不然局部int就炸了</span><br><span class="line">        double res1 = sqrt(1LL * (xg - xt) * (xg - xt) + 1LL * (yg - yt) * (yg - yt));</span><br><span class="line">        xg *= -1, yg *= -1;</span><br><span class="line">        double res2 = sqrt(1LL * (xg - xt) * (xg - xt) + 1LL * (yg - yt) * (yg - yt));</span><br><span class="line">        double ans = min(res1, res2);</span><br><span class="line">        cout &lt;&lt; fixed &lt;&lt; setprecision(9) &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 比赛题解 </category>
+          
+          <category> 牛客 </category>
+          
+          <category> 24年暑期多校 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>多校第三场</title>
       <link href="/%E5%A4%9A%E6%A0%A1%E7%AC%AC%E4%B8%89%E5%9C%BA/"/>
       <url>/%E5%A4%9A%E6%A0%A1%E7%AC%AC%E4%B8%89%E5%9C%BA/</url>
