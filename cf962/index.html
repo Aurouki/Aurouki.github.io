@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>cf962 | Aurouki</title><meta name="author" content="Aurouki"><meta name="copyright" content="Aurouki"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Codeforces Round 962(Div.3) (A-E)A.Legs&nbsp;&nbsp;&nbsp;&nbsp;签到题，直接放代码 Code:123456789101112131415161718192021#include&lt;bits&#x2F;stdc++.h&gt;#define endl &#x27;\n&#x27; using i64 &#x3D; long long;using name">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cf962">
+<meta property="og:url" content="http://example.com/cf962/index.html">
+<meta property="og:site_name" content="Aurouki">
+<meta property="og:description" content="Codeforces Round 962(Div.3) (A-E)A.Legs&nbsp;&nbsp;&nbsp;&nbsp;签到题，直接放代码 Code:123456789101112131415161718192021#include&lt;bits&#x2F;stdc++.h&gt;#define endl &#x27;\n&#x27; using i64 &#x3D; long long;using name">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/profile.jpg">
+<meta property="article:published_time" content="2024-07-27T13:57:25.000Z">
+<meta property="article:modified_time" content="2024-07-27T14:17:11.630Z">
+<meta property="article:author" content="Aurouki">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/profile.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/cf962/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":300},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'cf962',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-27 22:17:11'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/profile.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">28</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/top_back.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Aurouki"><span class="site-name">Aurouki</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">cf962</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-07-27T13:57:25.000Z" title="Created 2024-07-27 21:57:25">2024-07-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-27T14:17:11.630Z" title="Updated 2024-07-27 22:17:11">2024-07-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%AF%94%E8%B5%9B%E9%A2%98%E8%A7%A3/">比赛题解</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%AF%94%E8%B5%9B%E9%A2%98%E8%A7%A3/Codeforces/">Codeforces</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%AF%94%E8%B5%9B%E9%A2%98%E8%A7%A3/Codeforces/Div-3/">Div.3</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="cf962"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Codeforces-Round-962-Div-3-A-E"><a href="#Codeforces-Round-962-Div-3-A-E" class="headerlink" title="Codeforces Round 962(Div.3) (A-E)"></a>Codeforces Round 962(Div.3) (A-E)</h2><h3 id="A-Legs"><a href="#A-Legs" class="headerlink" title="A.Legs"></a>A.Legs</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;签到题，直接放代码</p>
+<h4 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define endl &#x27;\n&#x27; </span><br><span class="line">using i64 = long long;</span><br><span class="line">using namespace std;</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">    int t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        int n, ans;</span><br><span class="line">        cin &gt;&gt; n;</span><br><span class="line">        if(n==2)</span><br><span class="line">            ans = 1;</span><br><span class="line">        else if(n%4==0)</span><br><span class="line">            ans = n / 4;</span><br><span class="line">        else</span><br><span class="line">            ans = n / 4 + 1;</span><br><span class="line">        cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="B-Scale"><a href="#B-Scale" class="headerlink" title="B.Scale"></a>B.Scale</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;简单模拟题，同上，直接放代码</p>
+<h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code:"></a>Code:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define endl &#x27;\n&#x27; </span><br><span class="line">using i64 = long long;</span><br><span class="line">using namespace std;</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">    int t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        int n, k;</span><br><span class="line">        cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">        vector&lt;string&gt; s(n + 1);</span><br><span class="line">        for (int i = 1; i &lt;= n;i++)</span><br><span class="line">            cin &gt;&gt; s[i], s[i] = &quot; &quot; + s[i];</span><br><span class="line">        for (int i = 1; i &lt;= n; i += k)&#123;</span><br><span class="line">            for (int j = 1; j &lt;= n; j += k)</span><br><span class="line">                cout &lt;&lt; s[i][j];</span><br><span class="line">            cout &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="C-Sort-前缀和"><a href="#C-Sort-前缀和" class="headerlink" title="C.Sort(前缀和)"></a>C.Sort(前缀和)</h3><h4 id="时间复杂度：-O-26-cdot-n"><a href="#时间复杂度：-O-26-cdot-n" class="headerlink" title="时间复杂度：$O(26 \cdot n)$"></a>时间复杂度：$O(26 \cdot n)$</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;题意就是判断区间内不同字符的个数，注意$n,q$的范围均高达$2 \cdot 10^5$,所以使用前缀和<strong>预处理</strong>维护各个字母的前缀和，并<strong>离线</strong>处理询问即可。</p>
+<h4 id="Code-2"><a href="#Code-2" class="headerlink" title="Code:"></a>Code:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define endl &#x27;\n&#x27; </span><br><span class="line">using i64 = long long;</span><br><span class="line">using namespace std;</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">    int t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        int n, q;</span><br><span class="line">        cin &gt;&gt; n &gt;&gt; q;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; pre1(n + 1, vector&lt;int&gt;(30));</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; pre2(n + 1, vector&lt;int&gt;(30));</span><br><span class="line">        string a, b;</span><br><span class="line">        cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">        a = &quot; &quot; + a, b = &quot; &quot; + b;</span><br><span class="line">        for (int i = 1; i &lt;= n; i++)&#123;</span><br><span class="line">            for (int j = 1; j &lt;= 26;j++)&#123;</span><br><span class="line">                pre1[i][j] = pre1[i - 1][j];</span><br><span class="line">                pre2[i][j] = pre2[i - 1][j];</span><br><span class="line">            &#125;</span><br><span class="line">            pre1[i][a[i] - &#x27;a&#x27; + 1]++;</span><br><span class="line">            pre2[i][b[i] - &#x27;a&#x27; + 1]++;</span><br><span class="line">        &#125;</span><br><span class="line">        while(q--)&#123;</span><br><span class="line">            int l, r, ans = 0;</span><br><span class="line">            cin &gt;&gt; l &gt;&gt; r;</span><br><span class="line">            for (int i = 1; i &lt;= 26;i++)</span><br><span class="line">                ans += min(pre1[r][i] - pre1[l - 1][i], pre2[r][i] - pre2[l - 1][i]); //区间内相同字符数量</span><br><span class="line">            ans = r - l + 1 - ans;</span><br><span class="line">            cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="D-Fun-枚举，数学"><a href="#D-Fun-枚举，数学" class="headerlink" title="D.Fun(枚举，数学)"></a>D.Fun(枚举，数学)</h3><h4 id="时间复杂度：-O-n-ln-n"><a href="#时间复杂度：-O-n-ln-n" class="headerlink" title="时间复杂度：$O(n \ln n)$"></a>时间复杂度：$O(n \ln n)$</h4><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;给定两个整数$n$与$x$，寻找数对$(a,b,c)$的<strong>数量</strong>，其中$ab+ac+bc \le n$以及$a+b+c \le x$。注意，数对$(a,b,c)$中$a,b,c$三者相互独立（顺序固定）且均是<strong>正整数</strong>.</p>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><ul>
+<li>$1 \le n,x \le 10^6$</li>
+<li>$\sum n, \sum x \le 10^6$</li>
+</ul>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;首先从暴力枚举的角度统计数量，三层循环一定是超时的，我们退而求其次，考虑只枚举$a,b$；因为有限定条件$ab \le n$且$a+b \le x$，所以两层循环（$i,j$分别代表$a,b$）枚举$a,b$的复杂度为$j+ \frac{j}{2}+ \frac{j}{3}+…+1$,<strong>调和级数</strong>的复杂度趋向$O(n\cdot \ln n)$,对于题设中$1e6$的范围上限显然是可以接受的.<br>&nbsp;&nbsp;&nbsp;&nbsp;通过枚举的方式，每次循环$a,b$的值，所以$c$的<u>正整数数量就是数对数量</u>。由于$a,b$已知，由题设中两条不等式可推断：</p>
+<ul>
+<li>$c \le \dfrac{n-ab}{a+b}$</li>
+<li>$c \le x-a-b$</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;综上,$c$的正整数数量就是$min(\dfrac{n-ab}{a+b},x-a-b)$.</p>
+<h4 id="Code-3"><a href="#Code-3" class="headerlink" title="Code:"></a>Code:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define endl &#x27;\n&#x27; </span><br><span class="line">using i64 = long long;</span><br><span class="line">using namespace std;</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">    int t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        int n, x;</span><br><span class="line">        cin &gt;&gt; n &gt;&gt; x;</span><br><span class="line">        int mn = min(n, x);</span><br><span class="line">        i64 ans = 0;</span><br><span class="line">        for (int i = 1; i &lt; mn;i++) //枚举a</span><br><span class="line">            for (int j = 1; i * j &lt; n &amp;&amp; i + j &lt; x;j++) //枚举b</span><br><span class="line">                ans += min(x - i - j, (n - i * j) / (i + j));</span><br><span class="line">        cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="E-Decode"><a href="#E-Decode" class="headerlink" title="E.Decode"></a>E.Decode</h3><h4 id="时间复杂度：-O-n-log-2-n"><a href="#时间复杂度：-O-n-log-2-n" class="headerlink" title="时间复杂度：$O(n \log_2 n)$"></a>时间复杂度：$O(n \log_2 n)$</h4><h3 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;给定一个<strong>二进制</strong>字符串,对于每对整数$(l,r)(1 \le l \le r \le n)$,计算<strong>连续子串</strong>$s_x s_{x+1}…s_y$中<strong>0的数量等于1的数量</strong>的数对数量$(x,y)(l \le x \le y \le r)$。最后的答案取$1e9+7$的模.</p>
+<h3 id="数据范围-1"><a href="#数据范围-1" class="headerlink" title="数据范围"></a>数据范围</h3><ul>
+<li>$1 \le |s| \le 2 \cdot 10^5$</li>
+<li>$\sum |s| \le 2 \cdot 10^5$</li>
+</ul>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;对于子串数量的统计我们可以进行转化：求任意区间$(l,r)$中满足条件的子串$(x,y)$ $\Rightarrow$ <u>求满足条件的子串${(x,y)}$的区间$(l,r)$<font Color=red>$(l \le x,r \ge y)$</font>的<strong>方案数</strong>。</u>所以问题转化为寻找所有<strong>区间数量0和1相同的子串</strong>，若当前子串为$(x,y)$，字符串长度为$n$,那么合法的$(l,r)$的方案总数量显然是$x\times(n-y+1)$（<strong>乘法原理</strong>）.<br>&nbsp;&nbsp;&nbsp;&nbsp;寻找区间0和1数量相等的子串，经典思路就是将<strong>所有0置负</strong>，那么区间数量相等等价于<strong>区间和为0</strong>，即前缀和$pre[r]=pre[l-1]$；对于每一个枚举到的$l$,我们都需要找到<strong>右边所有</strong>满足区间和为0的$r$,所以需要使用维护一个<strong>后缀和</strong>，所以对于每一位枚举到的$l$，它对答案的贡献为$l*suf$.</p>
+<h4 id="Code-4"><a href="#Code-4" class="headerlink" title="Code:"></a>Code:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define endl &#x27;\n&#x27; </span><br><span class="line">using i64 = long long;</span><br><span class="line">using namespace std;</span><br><span class="line">const i64 p = 1e9 + 7;</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">    int t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        string s;</span><br><span class="line">        cin &gt;&gt; s;</span><br><span class="line">        int n = s.length();</span><br><span class="line">        s = &quot; &quot; + s;</span><br><span class="line">        vector&lt;int&gt; pre(n + 1);</span><br><span class="line">        map&lt;int, i64&gt; suf;</span><br><span class="line">        for (int i = 1; i &lt;= n;i++)&#123;</span><br><span class="line">            pre[i] = pre[i - 1];</span><br><span class="line">            pre[i] += (s[i] == &#x27;1&#x27; ? 1 : -1);</span><br><span class="line">        &#125;</span><br><span class="line">        suf[pre[n]] = 1;</span><br><span class="line">        i64 ans = 0;</span><br><span class="line">        for (int i = n - 1; i &gt;= 1;i--)&#123;</span><br><span class="line">            //cout &lt;&lt; i &lt;&lt; &#x27; &#x27; &lt;&lt; suf[pre[i]] &lt;&lt; endl;</span><br><span class="line">            ans = (ans + 1LL * i * suf[pre[i - 1]] % p) % p;</span><br><span class="line">            suf[pre[i]] += n - i + 1; //边遍历边统计</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">Aurouki</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/cf962/">http://example.com/cf962/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/profile.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>Sponsor</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://pic4.zhimg.com/80/v2-789342230cbb49adad182572eebb3c1f.jpg" target="_blank"><img class="post-qr-code-img" src="https://pic4.zhimg.com/80/v2-789342230cbb49adad182572eebb3c1f.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://pic4.zhimg.com/80/v2-af97967a4362f09333dd27b42b3928be.jpg" target="_blank"><img class="post-qr-code-img" src="https://pic4.zhimg.com/80/v2-af97967a4362f09333dd27b42b3928be.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/%E5%A4%9A%E6%A0%A1%E7%AC%AC%E5%9B%9B%E5%9C%BA/" title="多校第四场"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">多校第四场</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/profile.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">Aurouki</div><div class="author-info__description">个人博客,主要记录算法笔记、比赛题解与题集</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">28</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Codeforces-Round-962-Div-3-A-E"><span class="toc-number">1.</span> <span class="toc-text">Codeforces Round 962(Div.3) (A-E)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Legs"><span class="toc-number">1.1.</span> <span class="toc-text">A.Legs</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Code"><span class="toc-number">1.1.1.</span> <span class="toc-text">Code:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Scale"><span class="toc-number">1.2.</span> <span class="toc-text">B.Scale</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Code-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">Code:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Sort-%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-number">1.3.</span> <span class="toc-text">C.Sort(前缀和)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%9A-O-26-cdot-n"><span class="toc-number">1.3.1.</span> <span class="toc-text">时间复杂度：$O(26 \cdot n)$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Code-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">Code:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Fun-%E6%9E%9A%E4%B8%BE%EF%BC%8C%E6%95%B0%E5%AD%A6"><span class="toc-number">1.4.</span> <span class="toc-text">D.Fun(枚举，数学)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%9A-O-n-ln-n"><span class="toc-number">1.4.1.</span> <span class="toc-text">时间复杂度：$O(n \ln n)$</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E6%84%8F"><span class="toc-number">1.5.</span> <span class="toc-text">题意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="toc-number">1.6.</span> <span class="toc-text">数据范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">1.7.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Code-3"><span class="toc-number">1.7.1.</span> <span class="toc-text">Code:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-Decode"><span class="toc-number">1.8.</span> <span class="toc-text">E.Decode</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%9A-O-n-log-2-n"><span class="toc-number">1.8.1.</span> <span class="toc-text">时间复杂度：$O(n \log_2 n)$</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E6%84%8F-1"><span class="toc-number">1.9.</span> <span class="toc-text">题意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-1"><span class="toc-number">1.10.</span> <span class="toc-text">数据范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="toc-number">1.11.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Code-4"><span class="toc-number">1.11.1.</span> <span class="toc-text">Code:</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/cf962/" title="cf962">cf962</a><time datetime="2024-07-27T13:57:25.000Z" title="Created 2024-07-27 21:57:25">2024-07-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E5%A4%9A%E6%A0%A1%E7%AC%AC%E5%9B%9B%E5%9C%BA/" title="多校第四场">多校第四场</a><time datetime="2024-07-25T12:18:01.000Z" title="Created 2024-07-25 20:18:01">2024-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E5%A4%9A%E6%A0%A1%E7%AC%AC%E4%B8%89%E5%9C%BA/" title="多校第三场">多校第三场</a><time datetime="2024-07-23T23:16:37.000Z" title="Created 2024-07-24 07:16:37">2024-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E5%9B%BE-Graph/" title="图(Graph)">图(Graph)</a><time datetime="2024-07-22T09:41:31.000Z" title="Created 2024-07-22 17:41:31">2024-07-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E5%A4%9A%E6%A0%A1%E7%AC%AC%E4%BA%8C%E5%9C%BA/" title="多校第二场">多校第二场</a><time datetime="2024-07-21T13:31:59.000Z" title="Created 2024-07-21 21:31:59">2024-07-21</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/top_back.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Aurouki</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="数据结构,动态规划,字符串,博弈论,搜索,图论,数论" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
