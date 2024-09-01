@@ -4,6 +4,71 @@
   
     
     <entry>
+      <title>多校第一场</title>
+      <link href="/%E5%A4%9A%E6%A0%A1%E7%AC%AC%E4%B8%80%E5%9C%BA/"/>
+      <url>/%E5%A4%9A%E6%A0%A1%E7%AC%AC%E4%B8%80%E5%9C%BA/</url>
+      
+        <content type="html"><![CDATA[<h2 id="C-Sum-of-Suffix-Sums-后缀和-思维"><a href="#C-Sum-of-Suffix-Sums-后缀和-思维" class="headerlink" title="C. Sum of Suffix Sums (后缀和/思维)"></a>C. Sum of Suffix Sums (后缀和/思维)</h2><h4 id="时间复杂度-：-O-q"><a href="#时间复杂度-：-O-q" class="headerlink" title="时间复杂度 ：$O(q)$"></a>时间复杂度 ：$O(q)$</h4><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;起始有一个空的数组，现在对该数组进行$q$ 次操作：</p><ul><li>给定两个非负整数 $t$ 和 $v$ ，从末尾移除 $t$ 个元素并将元素 $v$ 加到末尾。保证每次元素数量不小于 $t$ </li></ul><p>&nbsp;&nbsp;&nbsp;&nbsp;每次操作后输出<u>每个索引的后缀和</u>的<strong>总和</strong>，由于答案可能会很大，对答案进行 $1000000007$ 取模.</p><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><ul><li>$1 \le q \le 5 \times 10^5$</li><li>$0 \le v \le 10^9$ </li></ul><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;由于每次操作输出后缀总和，不妨直接从答案出发；设 $sum[i]$ 为前 $i$ 个元素的后缀总和，当末尾添加一个元素（ 第 $i+1 $ 个元素 ）$ v$ 时，其对后缀的贡献为 $v \times i$ ，即$sum[i+1]=sum[i]+v*i$ ; 当取出 $t$ 个元素时，类似于栈的 $pop$ 操作,直接将元素数量减去 $t$ 即可 .</p><h4 id="Code"><a href="#Code" class="headerlink" title="Code:"></a>Code:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define endl &#x27;\n&#x27; </span><br><span class="line">using i64 = long long;</span><br><span class="line">using namespace std;</span><br><span class="line">const i64 p = 1e9 + 7;</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">    int q, top = 0;</span><br><span class="line">    cin &gt;&gt; q;</span><br><span class="line">    vector&lt;i64&gt; sum(q + 5);</span><br><span class="line">    for (int i = 1; i &lt;= q;i++)&#123;</span><br><span class="line">        int t, v;</span><br><span class="line">        cin &gt;&gt; t &gt;&gt; v;</span><br><span class="line">        top -= t;</span><br><span class="line">        top++;</span><br><span class="line">        sum[top] = (sum[top - 1] % p + (top * v) % p) % p;</span><br><span class="line">        cout &lt;&lt; sum[top] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="H-World-Finals-模拟"><a href="#H-World-Finals-模拟" class="headerlink" title="H. World Finals (模拟)"></a>H. World Finals (模拟)</h2><h4 id="时间复杂度：-O-Max-m-n-log-n"><a href="#时间复杂度：-O-Max-m-n-log-n" class="headerlink" title="时间复杂度：$O(Max(m,n \log n))$"></a>时间复杂度：$O(Max(m,n \log n))$</h4><h3 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;共有两场比赛可供队伍参加，分别给定 $n$ 和 $m$ ，表示两场比赛可能参赛的队伍数量，每支队伍有对应的答题数  $p$ 和罚时 $t$ (按照 $icpc$ 赛制进行排序)，保证不会出现答题数和罚时完全相同的队伍。可能出现一支队伍有两场比赛的参与权，但每支队伍只能参加一场比赛，其中队伍名 $lzr010506$ 有两场的参赛可能。求队伍 $lzr010506$ 可能取得的最高排名 .</p><h3 id="数据范围-1"><a href="#数据范围-1" class="headerlink" title="数据范围"></a>数据范围</h3><ul><li>$1 \le n,m \le 10^5$</li><li>$1 \le p,t \le 10^9$</li></ul><h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>​&nbsp;&nbsp;&nbsp;&nbsp;简单模拟题，要使得指定队伍排名最高，则其余拥有两场比赛参赛权的队伍应当去参加另一场比赛.</p><p>​&nbsp;&nbsp;&nbsp;&nbsp;对所有队伍根据规则进行结构体排序，再记录拥有两场比赛参赛权的队伍，依次枚举其在各自比赛的位次，当遇到特殊队伍则跳过，两种比赛的最高排名取最大值即可.</p><h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code:"></a>Code:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define endl &#x27;\n&#x27; </span><br><span class="line">using i64 = long long;</span><br><span class="line">using namespace std;</span><br><span class="line">struct node&#123;</span><br><span class="line">    string name;</span><br><span class="line">    int p, t;</span><br><span class="line">    bool operator&lt;(const node x)const&#123;</span><br><span class="line">        if(p!=x.p)</span><br><span class="line">            return p &gt; x.p;</span><br><span class="line">        else</span><br><span class="line">            return t &lt; x.t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; team1[100010], team2[100010];</span><br><span class="line">signed main()&#123;</span><br><span class="line">    std::ios::sync_with_stdio(false);cin.tie(0);</span><br><span class="line">    int n, m;</span><br><span class="line">    map&lt;string, int&gt; cnt;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    for (int i = 1; i &lt;= n;i++)&#123;</span><br><span class="line">        cin &gt;&gt; team1[i].name &gt;&gt; team1[i].p &gt;&gt; team1[i].t;</span><br><span class="line">        cnt[team1[i].name]++;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(team1 + 1, team1 + n + 1);</span><br><span class="line">    cin &gt;&gt; m;</span><br><span class="line">    for (int i = 1; i &lt;= m; i++)&#123;</span><br><span class="line">        cin &gt;&gt; team2[i].name &gt;&gt; team2[i].p &gt;&gt; team2[i].t;</span><br><span class="line">        cnt[team2[i].name]++;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(team2 + 1, team2 + m + 1);</span><br><span class="line">    int ans = 1e6;</span><br><span class="line">    int tot = 0;</span><br><span class="line">    for (int i = 1; i &lt;= n;i++)&#123;</span><br><span class="line">        if(team1[i].name==&quot;lzr010506&quot;)&#123;</span><br><span class="line">            tot++;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        if(cnt[team1[i].name]==2)</span><br><span class="line">            continue;</span><br><span class="line">        else </span><br><span class="line">            tot++;</span><br><span class="line">    &#125;</span><br><span class="line">    ans = min(ans, tot);</span><br><span class="line">    tot = 0;</span><br><span class="line">    for (int i = 1; i &lt;= m; i++)&#123;</span><br><span class="line">        if (team2[i].name == &quot;lzr010506&quot;)&#123;</span><br><span class="line">            tot++;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        if (cnt[team2[i].name] == 2)</span><br><span class="line">            continue;</span><br><span class="line">        else</span><br><span class="line">            tot++;</span><br><span class="line">    &#125;</span><br><span class="line">    ans = min(ans, tot);</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    /*for (int i = 1; i &lt;= n;i++)</span><br><span class="line">        cout &lt;&lt; team1[i].name &lt;&lt; &#x27; &#x27; &lt;&lt; team1[i].p &lt;&lt; &#x27; &#x27; &lt;&lt; team1[i].t &lt;&lt; endl;</span><br><span class="line">    for (int i = 1; i &lt;= m; i++)</span><br><span class="line">        cout &lt;&lt; team2[i].name &lt;&lt; &#x27; &#x27; &lt;&lt; team2[i].p &lt;&lt; &#x27; &#x27; &lt;&lt; team2[i].t &lt;&lt; endl;*/</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 比赛题解 </category>
+          
+          <category> 牛客 </category>
+          
+          <category> 24年暑期多校 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>贪心</title>
+      <link href="/%E8%B4%AA%E5%BF%83/"/>
+      <url>/%E8%B4%AA%E5%BF%83/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接：https-ac-nowcoder-com-acm-contest-89237-D"><a href="#题目链接：https-ac-nowcoder-com-acm-contest-89237-D" class="headerlink" title="题目链接：https://ac.nowcoder.com/acm/contest/89237/D"></a>题目链接：<a href="https://ac.nowcoder.com/acm/contest/89237/D">https://ac.nowcoder.com/acm/contest/89237/D</a></h3><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 一句话题解 </category>
+          
+          <category> 贪心 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>动态规划</title>
+      <link href="/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+      <url>/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</url>
+      
+        <content type="html"><![CDATA[<h2 id="线性DP"><a href="#线性DP" class="headerlink" title="线性DP"></a>线性DP</h2><h3 id="题目链接：https-codeforces-com-contest-1547-problem-E"><a href="#题目链接：https-codeforces-com-contest-1547-problem-E" class="headerlink" title="题目链接：https://codeforces.com/contest/1547/problem/E"></a>题目链接：<a href="https://codeforces.com/contest/1547/problem/E">https://codeforces.com/contest/1547/problem/E</a></h3><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 一句话题解 </category>
+          
+          <category> 动态规划 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>异或哈希</title>
       <link href="/%E5%BC%82%E6%88%96%E5%93%88%E5%B8%8C/"/>
       <url>/%E5%BC%82%E6%88%96%E5%93%88%E5%B8%8C/</url>
@@ -152,9 +217,9 @@
       
         <tags>
             
-            <tag> 比赛题解 </tag>
-            
             <tag> Atcoder </tag>
+            
+            <tag> 比赛题解 </tag>
             
             <tag> abc </tag>
             
