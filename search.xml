@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>计网期末理论复习</title>
+      <link href="/%E8%AE%A1%E7%BD%91%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
+      <url>/%E8%AE%A1%E7%BD%91%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/</url>
+      
+        <content type="html"><![CDATA[<h2 id="计算机网络的定义与功能"><a href="#计算机网络的定义与功能" class="headerlink" title="计算机网络的定义与功能"></a>计算机网络的定义与功能</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>&nbsp;&nbsp;&nbsp;&nbsp; 计算机网络是通过<strong><wavy>传输介质、通信设施和网络通信协议</wavy></strong>，把分散在不同地点的计算机设备互连起来，实现<strong><font Color=Red>资源共享</font></strong>和<strong><font Color=Red>数据传输</font></strong>的系统.</p><h3 id="基本功能"><a href="#基本功能" class="headerlink" title="基本功能"></a>基本功能</h3><ol><li><strong>数据通信</strong>（最基本）</li><li><strong>资源共享</strong></li><li><strong>分布式处理</strong></li></ol><h2 id="计算机网络的物理结构"><a href="#计算机网络的物理结构" class="headerlink" title="计算机网络的物理结构"></a>计算机网络的物理结构</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;从功能组成看，<font style=background:Yellow>计算机网络由<strong>通信子网</strong>和<strong>资源子网</strong>构成</font>.</p><ul><li>通信子网(<emp>内部</emp>)：由各种传输介质、通信设备和相应的网络协议构成，使网络具有数据传输、交换、控制和存储的能力，实现<strong><font Color=Fusia>数据通信</font></strong>.</li><li>资源子网(<emp>外部</emp>)：实现<strong><font Color=Fusia>资源共享</font></strong>功能的设备及其软件的集合.</li></ul><h2 id="计算机网络的分类"><a href="#计算机网络的分类" class="headerlink" title="计算机网络的分类"></a>计算机网络的分类</h2><h3 id="分布范围"><a href="#分布范围" class="headerlink" title="分布范围"></a>分布范围</h3><p>1) 广域网：长距离通信，一般由电信部门组建的网络都为广域网，采用点到点信道和广播信道(卫星网络)，覆盖范围达100km-1000km.<br>2) 城域网：例如城市的有线电视网络、宽带网络等，多用光纤线路连接通信节点和计算机设备，覆盖范围在100km以内.<br>3) 局域网，日常最多使用的网络，传输介质为光纤和双绞线，覆盖范围在10km以内.</p><h3 id="传输技术"><a href="#传输技术" class="headerlink" title="传输技术"></a>传输技术</h3><p>1) 广播式网络：所有联网计算机都<strong>共享</strong>一个公共的通信信道。局域网基本采用广播式通信技术，广域网中的无线、卫星通信网络也采用该通信技术.<br>2) 点对点网络：每条物理<strong>线路连接</strong>一对计算机，若两台主机间没有直接连接的线路，则它们之间的分组传输就要通过中间节点进行存储和转发，直至到达目的结点.</p><h3 id="拓扑结构"><a href="#拓扑结构" class="headerlink" title="拓扑结构"></a>拓扑结构</h3><p>1) 总线形结构.<br>2) 星形结构.<br>3) 环形结构.<br>4) 网状结构.<br>计算机的拓扑结构取决于它的<strong><font color=OrangeRed>通信子网</font></strong>。其中，<u>网状拓扑结构常用于<strong>广域网</strong></u>，其余适用于局域网.</p><h2 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h2><ul><li>速率：也称数据传输速率，单位为bit/s(缩写为bps)</li><li>带宽：表示网络通信线路的传达数据能力，单位同样为bps</li><li>吞吐量：单位时间内通过某个网络（或信道、接口）的实际数据量</li><li><strong>时延</strong>：数据从网络的一端传送到另一端所需的总时间，它由4部分组成：发送时延、传播时延、处理时延和排队时延</li><li>信道利用率：某个信道有数据通过的百分比</li></ul><h2 id="计算机网络协议"><a href="#计算机网络协议" class="headerlink" title="计算机网络协议"></a>计算机网络协议</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;为了在网络中进行数据交换而建立的规则、标准或约定称为<strong>网络协议</strong>，是控制在对等实体之间进行通信的规则的集合，是水平的.</p><h3 id="网络协议的三要素：语法、语义、同步-时序"><a href="#网络协议的三要素：语法、语义、同步-时序" class="headerlink" title="网络协议的三要素：语法、语义、同步(时序)"></a>网络协议的三要素：语法、语义、同步(时序)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">语法是用户数据与控制信息的结构和格式(怎么做)</span><br><span class="line">语义是需要发出控制信息，以及完成的动作与做出的响应(做什么)</span><br><span class="line">同步可以理解为时序，即对事件实现顺序的详细说明(什么时候做)</span><br></pre></td></tr></table></figure><h3 id="网络分层结构"><a href="#网络分层结构" class="headerlink" title="网络分层结构"></a>网络分层结构</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;在分层结构中，第$n$层中的活动元素通常称为第$n$层实体。<br>&nbsp;&nbsp;&nbsp;&nbsp;分层结构的重要原则：<u>第$n$层为第$n+1$层提供服务</u></p><h3 id="网络协议的数据单元-PDU"><a href="#网络协议的数据单元-PDU" class="headerlink" title="网络协议的数据单元(PDU)"></a>网络协议的数据单元(PDU)</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;PDU由控制部分和数据部分组成，控制部分表示协议，数据部分为传输的内容。由于概念并不重要，不多赘述.<br>&nbsp;&nbsp;&nbsp;&nbsp;每层的PDU都不同，例如物理层的PDU为<em>比特流</em>，数据链路层的PUD为<em>帧</em>，网络层的PDU为<em>分组</em>，传输层的PDU为<em>报文段</em>.</p><h2 id="OSI参考模型和TCP-IP模型"><a href="#OSI参考模型和TCP-IP模型" class="headerlink" title="OSI参考模型和TCP/IP模型"></a>OSI参考模型和TCP/IP模型</h2><h3 id="OSI参考模型概述"><a href="#OSI参考模型概述" class="headerlink" title="OSI参考模型概述"></a>OSI参考模型概述</h3><p><img src="/blog/source/pic/osi.png" alt="img"></p><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 408 </tag>
+            
+            <tag> 计算机网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>2024CCPC郑州邀请赛</title>
       <link href="/2024CCPC%E9%83%91%E5%B7%9E%E9%82%80%E8%AF%B7%E8%B5%9B/"/>
       <url>/2024CCPC%E9%83%91%E5%B7%9E%E9%82%80%E8%AF%B7%E8%B5%9B/</url>
